@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import MainComponent from 'components/internal/MainComponent';
-import HeaderConatainer from 'containers/internal/HeaderConatainer';
+
 
 import store from './store';
 class AppComponent extends React.Component {
@@ -15,7 +15,6 @@ class AppComponent extends React.Component {
         <BrowserRouter>
           <Provider store={store}>
             <div>
-              <HeaderConatainer />
               <MainComponent />
             </div>
           </Provider>

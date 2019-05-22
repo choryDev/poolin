@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
+
 import HeaderComponent from '../../components/internal/HeaderComponent';
-import header from '../../assets/styles/material/header';
+import style from '../../assets/styles/header';
 
 const mapState = state => ({
 
@@ -12,6 +13,7 @@ const mapDispatch = dispatch => ({
 });
 
 const HeaderContainer = connect(mapState, mapDispatch)(
-       withStyles(header, { withTheme: true })(HeaderComponent)
-     )
- export default HeaderContainer;
+  withStyles(style, { withTheme: true })(HeaderComponent)
+)
+
+export default HeaderContainer;
