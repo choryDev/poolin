@@ -4,7 +4,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import sha256 from 'sha256';
 import queryString from 'query-string';
 import sendData from "../../assets/utils/sendData";
-import {ELW_TOKEN} from "../../assets/utils/KEY";
 import classNames from 'classnames';
 import {validateEmail} from "../../assets/utils/comm";
 import {Atag, Input, Typography} from '../unit/index';
@@ -29,11 +28,11 @@ class SIGN_002Component extends React.Component {
         ro:false},
         {name: 'password',
         placeholder: 'Password',
-        type: 'password',
+        type: 'Password',
         ro:false},
         {name: 'confirm_password',
         placeholder: 'Confirm Password',
-        type: 'password',
+        type: 'Password',
         ro:false},
       ],
       email: parsed.email !== undefined ? parsed.email.toString().replace(/ /gi, '+') : '',
@@ -124,22 +123,23 @@ class SIGN_002Component extends React.Component {
         </Atag>
         <div>
         <div className={classes.joinWarp}>
-          <Typography 
+          <Typography
             variant="h3"
             style={{marginBottom: '24px',color: "white",textAlign: "center"}}>
             Don't have an 
           </Typography>
           <Typography
             variant="h3"
-            textAlign="center"
             style={{marginBottom: '40px',color: "white",textAlign: "center"}}>
             Account?
           </Typography>
             <Atag 
             className={classes.buttonWarpR}
             href="/">
-              <Button style={{width:'50%'}}>
-                <Typography variant="Title">
+              <Button>
+                <Typography
+                  btnTextWeight
+                  variant="subtitle2">
                   Sign up for free
                 </Typography>
               </Button>
@@ -154,13 +154,15 @@ class SIGN_002Component extends React.Component {
             </Typography>
               <Typography
                  variant="body2"
-                 style={{marginTop:'30px',marginBottom: '80px'}}
+                 style={{marginTop:'30px',marginBottom: '80px', fontWeight: '400'}}
                  className={classNames(classes.centerText,classes.subText)}>
                    Everyting you need to share your budget with your team, sonner!
                 </Typography>
-            {this.state.inputArr.map((r,i)=>
-               input__Container(r,i)
-              )}
+                <form className={classes.form}>
+                {this.state.inputArr.map((r,i)=>
+                   input__Container(r,i)
+                  )}
+              </form>
             <div
               style={{ position: 'relative'}}>
                 <div 
@@ -169,11 +171,11 @@ class SIGN_002Component extends React.Component {
                     onChange={e=>this.handleChanged(e,'checkBox')}
                     className={classes.checkBox}
                     color="default"
-                    value={this.state.checkBox} />
+                    value="check" />
                   <Typography
-                   variant="caption"
-                   style={{marginTop: '2px'}}
-                   className={classNames(classes.centerText)}>
+                    variant="caption"
+                    style={{marginTop: '2px', fontWeight: '400'}}
+                    className={classNames(classes.centerText)}>
                          {I_AGREE_TO_THE}
                         <Atag 
                           className={classNames(classes.agreeText)}
@@ -196,7 +198,10 @@ class SIGN_002Component extends React.Component {
               <Button
                style={{width:'35%'}}
                onClick={this.doLogin}>
-                <Typography  variant="Title" style={{color:"white"}}>
+                <Typography
+                  btnTextWeight
+                  variant="subtitle2"
+                  style={{color:"white"}}>
                 Get Started for free
                 </Typography>
               </Button>

@@ -30,6 +30,9 @@ const Input = ({ ...state }) => {
       fontFamily: 'montserrat',
       fontWeight: com.fontWeight,
       height: '50px',
+      '&>div':{
+        fontSize: '14px',
+      }
     }
   })
   const classes = useStyles();

@@ -48,6 +48,7 @@ const landing = theme => ({
         
       },
       submitButton2: {
+        textDecoration: "none",
         margin: theme.spacing.unit,
         marginLeft: theme.spacing.unit * 4,
         width: 120,

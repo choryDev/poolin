@@ -11,13 +11,17 @@ const Typography = ({ ...state }) => {
     className,
     variant,
     style,
+    btnTextWeight,
+    fontWeight,
     ...other
   } = state;
 
   const useStyles = makeStyles({
     defaultText:{
+      textTransform: 'none',
       fontFamily: 'montserrat',
-      fontWeight: com.fontWeight,
+      fontWeight: btnTextWeight ? com.fontWeight[1] :
+                     fontWeight ? com.fontWeight[fontWeight] :com.fontWeight[0],
     }
   });
   const classes = useStyles();

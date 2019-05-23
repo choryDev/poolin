@@ -10,8 +10,7 @@ class Main extends React.Component {
   render() {
     return (
       <main>
-        {/* <Route exact path="/" component={Landing} /> */}
-        <Route exact path="/" component={Find_PW004} />
+        <Route exact path="/" component={Landing} />
         <Route exact path="/home" component={Landing} />
         <Route exact path="/login" component={Sign_001} />
         <Route exact path="/join" component={Sign_002} />
