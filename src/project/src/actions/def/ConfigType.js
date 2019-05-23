@@ -1,0 +1,2 @@
+export const WORKSPACE = 'WORKSPACE';
+export const NOT_WORKSPACE = 'NOT_WORKSPACE';

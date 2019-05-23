@@ -8,15 +8,20 @@ import HeaderConatainer from 'containers/internal/HeaderConatainer';
 import LeftContainer from './containers/internal/LeftContainer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import store from './store';
-
+import queryString from 'query-string';
+import {inWorkspace} from './actions/behave/ConfigAction';
 class AppComponent extends React.Component {
   state = {
+    workspace: false,
     openMenu: false
   };
 
   constructor(props){
     super(props)
     this.handleMenuOpen = this.handleMenuOpen.bind(this)
+    this.handleWorkspace = this.handleWorkspace.bind(this)
+    this.handleMenuClose = this.handleMenuClose.bind(this)
+
   }
 
   handleMenuOpen(){
@@ -25,20 +30,37 @@ class AppComponent extends React.Component {
     })
   }
 
+  handleMenuClose(){
+    this.setState({
+      openMenu: false
+    })
+  }
+
+
+
+  handleWorkspace(){
+    store.dispatch(inWorkspace(true))
+  }
+
   render() {
     return (
       <AppContainer>
         <BrowserRouter>
           <Provider store={store}>
-            <div>
+            <div style={{
+              flexGrow: 1,
+              height: '100%',
+            }}>
               <CssBaseline />
               <HeaderConatainer open={this.state.openMenu}
-                handleOpen={this.handleMenuOpen}
+                                handleOpen={this.handleMenuOpen}
+                                close={this.handleMenuClose}
               />
               <LeftContainer open={this.state.openMenu}
                              handleOpen={this.handleMenuOpen}
+                             close={this.handleMenuClose}
               />
-              <MainComponent open={this.state.openMenu}/>
+              <MainComponent open={this.state.openMenu} handleWorkspace={this.handleWorkspace}/>
             </div>
           </Provider>
         </BrowserRouter>
