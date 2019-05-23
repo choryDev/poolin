@@ -60,6 +60,7 @@ const styles = theme => ({
   content: {
     overflowX: 'scroll',
     flexGrow: 1,
+    height: '100%',
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
     transition: theme.transitions.create('margin', {

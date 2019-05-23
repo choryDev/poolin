@@ -18,10 +18,15 @@ class LeftComponent extends React.Component {
 
   }
 
-  render() {
-    const { classes, theme, handleOpen } = this.props;
+  componentWillReceiveProps(nextProps, nextContext) {
+    if(this.props.open !== nextProps.workspace && !nextProps.workspace){
+      this.props.close();
+    }
+  }
 
-    return (
+  render() {
+    const { classes, theme, handleOpen, workspace } = this.props;
+    const MENU = () =>
       <Drawer
         variant="permanent"
         className={classNames(classes.drawer, {
@@ -43,7 +48,7 @@ class LeftComponent extends React.Component {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Inbox', 'Starred', 'Send email', 'Drafts', 'asd', 'df', 'Inbox', 'Starred', 'Send email', 'Drafts', 'asd', 'df', 'Inbox', 'Starred', 'Send email', 'Drafts', 'asd', 'df','Inbox', 'Starred', 'Send email', 'Drafts', 'asd', 'df'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
@@ -59,7 +64,12 @@ class LeftComponent extends React.Component {
             </ListItem>
           ))}
         </List>
-      </Drawer>
+      </Drawer>;
+
+    return (
+      <div>
+        {workspace ? <MENU /> : undefined}
+      </div>
     )
   }
 }

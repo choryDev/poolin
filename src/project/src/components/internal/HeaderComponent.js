@@ -12,11 +12,16 @@ class HeaderComponent extends React.Component {
 
   }
 
+  componentWillReceiveProps(nextProps, nextContext) {
+    if(this.props.open !== nextProps.workspace && !nextProps.workspace){
+      this.props.close();
+    }
+  }
+
   render() {
 
-    const { classes, theme, handleOpen } = this.props;
-
-    return (
+    const { classes, theme, handleOpen, workspace } = this.props;
+    const APP = () =>
       <AppBar
         position="fixed"
         className={classNames(classes.appBar, {
@@ -38,7 +43,12 @@ class HeaderComponent extends React.Component {
             Mini variant drawer
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar>;
+
+    return (
+      <div>
+        {workspace ? <APP /> : <div></div>}
+      </div>
     )
   }
 }

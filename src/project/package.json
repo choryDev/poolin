@@ -52,7 +52,7 @@
     "postcss-preset-env": "6.0.6",
     "postcss-safe-parser": "4.0.1",
     "promise": "^8.0.2",
-    "query-string": "^6.2.0",
+    "query-string": "^6.5.0",
     "rc-datepicker": "^5.0.13",
     "react": "^16.6.0",
     "react-app-polyfill": "^0.1.3",
