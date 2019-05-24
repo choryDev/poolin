@@ -22,6 +22,21 @@ const styles = theme => ({
       'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
       'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
+  ///////////////////////////////modal/////////////////////////////////////
+  modalTitle:{
+    justifyContent: 'space-between',
+    display: 'flex',
+  },
+  modalBody:{
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  modalInput:{
+    width:'30rem',
+  },
+  closeButton:{
+    padding: '0'
+  }
 });
 
 export default styles;

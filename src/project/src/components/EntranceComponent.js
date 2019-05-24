@@ -1,29 +1,61 @@
 import React from 'react';
 import { CompanyCard } from './unit';
 import { Typography } from './unit/index'
-// import GridList from '@material-ui/core/GridList';
-// import GridListTile from '@material-ui/core/GridListTile';
-// import GridListTileBar from '@material-ui/core/GridListTileBar';
-// import ListSubheader from '@material-ui/core/ListSubheader';
-// import IconButton from '@material-ui/core/IconButton';
-// import InfoIcon from '@material-ui/icons/Info';
-
+import Modal from './EntranceModalComponent'
+import sendData from '../assets/utils/sendData'
 const tileData = [
   {title: 'ssss', author: '', icon: 'fas fa-building', color: 'red'},
   {title: '1111', author: '', icon: 'fas fa-industry', color: 'blue'},
   {title: '2222', author: '', icon: 'fas fa-building', color: 'yellow'},
   {title: '3333', author: '', icon: 'fas fa-industry', color: 'green'},
 ]
-
+const initState ={
+  open: false,
+  newCardNm: '',
+  newCardWb: '',
+  loading: false,
+}
 
 class EntranceComponent extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state=initState;
+    this.handleModal = this.handleModal.bind(this);
+    this.AddCmpy=this.AddCmpy.bind(this);
   }
-
+  handleChanged(e){
+    const {value, name} = e.target;
+    this.setState({
+      [name] : value
+    })
+  }
+  handleModal(){
+    this.setState({
+      open: !this.state.open,
+    })
+  }
   componentDidMount() {
     this.props.notInWorkspace();
+  }
+
+  AddCmpy = () => {
+    if (this.state.loading) {
+      return;
+    };
+    console.log('hahah');
+    sendData(`/api/request/reset_password`, 'POST', {}, {
+      newCardNm: this.state.newCardNm,
+      newCardWb: this.state.newCardWb,
+    },
+      {timeout: 30 * 1000},
+      res => {
+        this.setState({
+          newCardNm: '',
+          newCardWb: '',
+        })
+        this.handleModal();
+      }, err => {
+      });
   }
 
   render() {
@@ -51,7 +83,8 @@ class EntranceComponent extends React.Component {
           style={{cursor: 'pointer'}}
           variant='caption'
           color='#5ac0e5'
-          fontWeight={1}>
+          fontWeight={1}
+          onClick={()=>this.handleModal()}>
           <i className="fas fa-plus"/>
           Add Company
         </Typography>
@@ -71,6 +104,14 @@ class EntranceComponent extends React.Component {
         </Typography>
         </div>
         </div>
+        <Modal
+          classes = {classes}
+          open = {this.state.open}
+          newCardNm = {this.state.newCardNm}
+          newCardWb = {this.state.newCardWb}
+          handleChanged = {e=>this.handleChanged(e)}
+          handleModal = {()=>this.handleModal()}
+          AddCmpy = {()=>this.AddCmpy()}/>
       </div>
     );
   }
