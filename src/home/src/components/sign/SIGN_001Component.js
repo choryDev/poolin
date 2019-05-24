@@ -97,50 +97,57 @@ class SIGN_001Component extends React.Component {
               href="/home">
                 <Typography
                  variant="h6"
+                 fontWeight={1}
                  style={{marginTop:'30px'}}
                  className={classNames(classes.centerText,classes.subText)}>
                    or user your email account
                 </Typography>
             </Atag>
-            <Input
-              className={classNames(classes.idPwInput)}
-              value={this.state.email}
-              placeholder="E-mail"
-              type="email"
-              name="email"
-              onChange={e => this.handleChange(e)}
-              onKeyPress={event => {
-                if (event.key === 'Enter') {
-                  this.doLogin()}}}/>
-            <Input
-              className={classNames(classes.idPwInput,classes.marginTop0)}
-              value={this.state.password}
-              placeholder="Password"
-              type="password"
-              name="password"
-              onChange={e => this.handleChange(e)}
-              onKeyPress={event => {
-                if (event.key === 'Enter') {
-                  this.doLogin()}}}/>
+            <form  className={classes.form}>
+              <Input
+                className={classNames(classes.idPwInput)}
+                value={this.state.email}
+                placeholder="E-mail"
+                type="email"
+                name="email"
+                autoComplete="username"
+                onChange={e => this.handleChange(e)}
+                onKeyPress={event => {
+                  if (event.key === 'Enter') {
+                    this.doLogin()}}}/>
+              <Input
+                className={classNames(classes.idPwInput,classes.marginTop0)}
+                value={this.state.password}
+                placeholder="Password"
+                type={"password"}
+                name="password"
+                autoComplete="current-password"
+                onChange={e => this.handleChange(e)}
+                onKeyPress={event => {
+                  if (event.key === 'Enter') {
+                    this.doLogin()}}}/>
+              </form>
             <Atag 
               className={classes.alertWrap}
               href="/findpw">
               <Typography
-               variant="subtitle2"
+               fontWeight={1}
                style={{marginBottom:'48px', marginTop: '16px'}}
                className={classNames(classes.centerText,classes.subText)}>
                     FORGOT YOUR PASSWORD
               </Typography>
               <Typography
-               variant="caption"
                className={classes.loginAlert}>
                     {this.state.alertMessage}
               </Typography>
             </Atag>
-            <div className={classes.buttonWarpL}>
+            <div className={classes.buttonWrapL}>
               <Button
                onClick={this.doLogin}>
-                <Typography variant="Title" style={{color:"white"}}>
+                <Typography
+                  btnTextWeight
+                  variant="subtitle2"
+                  style={{color:"white"}}>
                  Submit
                 </Typography>
               </Button>
@@ -153,16 +160,17 @@ class SIGN_001Component extends React.Component {
               Don't have an 
             </Typography>
             <Typography
-            variant="h4"
-            textAlign="center"
-            style={{marginBottom: 40,color: "white",textAlign: "center"}}>
-            Account?
+              variant="h4"
+              style={{marginBottom: 40,color: "white",textAlign: "center"}}>
+              Account?
             </Typography>
               <Atag 
               className={classes.buttonWarpR}
               href="/">
                 <Button style={{width:'50%'}}>
-                  <Typography variant="Title">
+                  <Typography
+                    btnTextWeight
+                    variant="subtitle2">
                     Sign up for free
                   </Typography>
                 </Button>

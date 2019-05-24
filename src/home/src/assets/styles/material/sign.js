@@ -49,6 +49,8 @@ const sign = theme => ({
         color: '333333 !important'
       },
       '& button':{
+        paddingLeft: '25px',
+        paddingRight: '25px',
         backgroundColor: '#fff',
         borderRadius: '50rem',
         border: '1px solid #fff',
@@ -61,14 +63,14 @@ const sign = theme => ({
       }
 
     },
-    buttonWarpL: {
+    buttonWrapL: {
       display: 'flex',
       justifyContent: 'center',
       height: '7%',
       '& button': {
         borderRadius: '50rem',
-        paddingLeft: '16px',
-        paddingRight: '16px',
+        paddingLeft: '25px',
+        paddingRight: '25px',
         '& hover': {
             color: '#2D3135',
         }        
@@ -77,7 +79,7 @@ const sign = theme => ({
     button002WarpR: {
       display: 'flex',
       justifyContent: 'center',
-      height: '7%',
+      minHeight: '7%',
       '& button': {
         borderRadius: '50rem',
         '& hover': {
@@ -88,7 +90,7 @@ const sign = theme => ({
     buttonWarpR: {
         display: 'flex',
         justifyContent: 'center',
-        height: '7%',
+        minHeight: '7%',
       },
     subText: {
         color:'#767676',
@@ -157,10 +159,15 @@ const sign = theme => ({
   },
   marginTop0: {
     marginTop:'0'
-  },sign002Input: {
+  },
+  sign002Input: {
     marginBottom: '10px',
     marginTop: '0'
-  }
+  },
+  form: {
+    display: "flex",
+     flexDirection: "column"
+    }
   })
   
   export default sign;

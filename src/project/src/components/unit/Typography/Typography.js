@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
 import Typography1 from '@material-ui/core/Typography';
-import com from '../../../assets/styles/material/common'
+import { font } from '../../../assets/styles/material/com/index'
 
 const Typography = ({ ...state }) => {
 
@@ -11,6 +11,7 @@ const Typography = ({ ...state }) => {
     className,
     variant,
     style,
+    color,
     btnTextWeight,
     fontWeight,
     ...other
@@ -20,8 +21,9 @@ const Typography = ({ ...state }) => {
     defaultText:{
       textTransform: 'none',
       fontFamily: 'montserrat',
-      fontWeight: btnTextWeight ? com.fontWeight[1] :
-                     fontWeight ? com.fontWeight[fontWeight] :com.fontWeight[0],
+      fontWeight: btnTextWeight ? font.fontWeight[1] :
+                     fontWeight ? font.fontWeight[fontWeight] :font.fontWeight[0],
+      color: color ? color : font.defaultFontColor,
     }
   });
   const classes = useStyles();

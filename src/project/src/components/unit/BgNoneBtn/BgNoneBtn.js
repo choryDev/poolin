@@ -12,7 +12,6 @@ const BgNoneBtn = ({ ...state }) => {
     color:'#fff',
     fontSize: '13.3333px',
     margin: '1%',
-    textDecoration: "none",
     '&:hover': {
       background: '#fff !important',
       color:'#2D3135',
@@ -23,7 +22,6 @@ const BgNoneBtn = ({ ...state }) => {
     <Button
         { ...other}
         color="primary"
-       
         style={bgNoneBtn}>
          {children}
     </Button>

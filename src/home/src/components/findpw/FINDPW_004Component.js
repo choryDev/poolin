@@ -1,8 +1,6 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
-import Fab from '@material-ui/core/Fab';
-import sha256 from 'sha256';
-import queryString from 'query-string';
+//import sha256 from 'sha256';
 //import {ELW_TOKEN} from "../utils/KEY";
 import classNames from 'classnames';
 import {Atag, Input, Typography} from '../unit/index';
@@ -10,14 +8,13 @@ import {Atag, Input, Typography} from '../unit/index';
 class FINDPW_004Component extends React.Component {
   constructor(props){
     super(props);
-    const parsed = queryString.parse(window.location.search);
     this.state={
         username:'username',
         confirmPassword:'',
         password:'',
         loading:false,
         
-        alertMessage:'d',
+        alertMessage:'',
     }
     this.handleChange=this.handleChange.bind(this);
     this.doSubmit=this.doSubmit.bind(this);
@@ -76,32 +73,37 @@ class FINDPW_004Component extends React.Component {
             </Typography>
                 <Typography
                  variant="body2"
+                 fontWeight={2}
                  style={{ 
                     marginTop: '16px',
                     marginBottom: '24px'}}
                  className={classes.subText}>
                    We will help you to change the new password. 
                 </Typography>
-            <Input
-              style={{marginBottom:'0px'}}
-              value={this.state.password}
-              placeholder="New password"
-              type="password"
-              name="password"
-              onChange={e => this.handleChange(e)}
-              onKeyPress={event => {
-                if (event.key === 'Enter') {
-                  this.doSubmit()}}}/>
-            <Input
-              style={{marginTop:'10px'}}
-              value={this.state.confirmPassword}
-              placeholder="Confirm password"
-              type="password"
-              name="confirmPassword"
-              onChange={e => this.handleChange(e)}
-              onKeyPress={event => {
-                if (event.key === 'Enter') {
-                  this.doSubmit()}}}/>
+                <form className={classes.form}>
+                  <Input
+                    style={{marginBottom:'0px'}}
+                    value={this.state.password}
+                    placeholder="New password"
+                    type="password"
+                    name="password"
+                    autoComplete="change-password"
+                    onChange={e => this.handleChange(e)}
+                    onKeyPress={event => {
+                      if (event.key === 'Enter') {
+                        this.doSubmit()}}}/>
+                  <Input
+                    style={{marginTop:'10px'}}
+                    value={this.state.confirmPassword}
+                    placeholder="Confirm password"
+                    type="password"
+                    autoComplete="change-password"
+                    name="confirmPassword"
+                    onChange={e => this.handleChange(e)}
+                    onKeyPress={event => {
+                      if (event.key === 'Enter') {
+                        this.doSubmit()}}}/>
+              </form>
                 <div style={{
                   position: 'relative',
                   marginBottom:'6px', marginTop: '10px'}}>
@@ -115,10 +117,13 @@ class FINDPW_004Component extends React.Component {
                         {this.state.alertMessage}
                   </Typography>
               </div>
-            <div className={classes.buttonWarpL}>
+            <div className={classes.buttonWrapL}>
               <Button
                onClick={this.doSubmit}>
-                <Typography variant="Title" style={{color:"white"}}>
+                <Typography 
+                  btnTextWeight
+                  variant="subtitle2"
+                  style={{color:"white"}}>
                  Submit
                 </Typography>
               </Button>

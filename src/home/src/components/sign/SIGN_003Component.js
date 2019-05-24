@@ -54,11 +54,11 @@ class SIGN_003Component extends React.Component {
     const statusMsg = () => {
       switch (this.state.status) {
         case 1:
-          return <Typography variant="body2" className={classes.helpType1}>성공적으로 이메일을 발송하였습니다. :)</Typography>
+          return <Typography fontWeight={2} variant="body2" className={classes.helpType1}>성공적으로 이메일을 발송하였습니다. :)</Typography>
         case 2:
-          return <Typography variant="body2" className={classes.helpType2}>이메일정보는 확인하셨나요?ㅜㅡㅜ</Typography>
+          return <Typography fontWeight={2} variant="body2" className={classes.helpType2}>이메일정보는 확인하셨나요?ㅜㅡㅜ</Typography>
         case 3:
-          return <Typography variant="body2" className={classes.helpType2}>이메일 형식이 올바르지 않습니다.</Typography>
+          return <Typography fontWeight={2} variant="body2" className={classes.helpType2}>이메일 형식이 올바르지 않습니다.</Typography>
         default:
           return <p></p>
       }
@@ -81,9 +81,11 @@ class SIGN_003Component extends React.Component {
             </Typography>
             <Typography
              variant="body2"
+             fontWeight={2}
              style={{marginTop: '32px',marginBottom: '24px'}}
              className={classNames(classes.centerText,classes.subText)}>
-              No problem, It happens to the best of us. ☺️
+              No problem, It happens to the best of us.
+               <span role="img" aria-label="smile">☺️</span>
             </Typography>
             <Input
               style={{width: '80%'}}
@@ -96,10 +98,13 @@ class SIGN_003Component extends React.Component {
               <div className={classes.idPwInput}>
                 {statusMsg()}
               </div>
-            <div className={classes.buttonWarpL} style={{marginTop: '10px'}}>
+            <div className={classes.buttonWrapL} style={{marginTop: '10px'}}>
               <Button 
                 onClick={()=>this.handleSend()} >
-                <Typography variant="Title" style={{color:"white"}}>
+                <Typography
+                  btnTextWeight
+                  variant="subtitle2" 
+                  style={{color:"white"}}>
                  Submit
                 </Typography>
               </Button>
@@ -112,20 +117,21 @@ class SIGN_003Component extends React.Component {
               Don't have an 
             </Typography>
             <Typography
-            variant="h3"
-            textAlign="center"
-            style={{marginBottom: '40px',color: "white",textAlign: "center"}}>
-            Account?
+              variant="h3"
+              style={{marginBottom: '40px',color: "white",textAlign: "center"}}>
+              Account?
             </Typography>
-              <Atag 
+            <Atag 
               className={classes.buttonWarpR}
               href="/">
-                <Button style={{width:'50%'}}>
-                  <Typography variant="Title">
-                    Sign up for free
-                  </Typography>
-                </Button>
-                </Atag>
+              <Button style={{width:'50%'}}>
+                <Typography
+                  btnTextWeight
+                  variant="subtitle2">
+                  Sign up for free
+                </Typography>
+              </Button>
+              </Atag>
           </div>
         </div>
       </div>

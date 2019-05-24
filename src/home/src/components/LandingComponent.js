@@ -1,10 +1,9 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import HeaderConatainer from 'containers/internal/HeaderConatainer';
 import sendData from "../assets/utils/sendData";
 import classNames from 'classnames';
-import {Atag, Input} from './unit/index';
+import {Atag, Input, Typography} from './unit/index';
 import loadingbtn from '../assets/images/icons/loadingbtn.svg';
 
 class LandingComponent extends React.Component {
@@ -60,14 +59,14 @@ class LandingComponent extends React.Component {
           <Typography
             variant="h3"
             className={classNames(classes.seDisplay1,classes.font)}>
-          Make your success in Assi which help you
+            Make your success in Assi which help you
           </Typography>
           <Typography 
             variant="h3"
             className={classNames(classes.seDisplay1,classes.font)}>
-          being better than before
+            being better than before
           </Typography>
-          <Typography variant="caption" className={classes.seDisplay2}>
+          <Typography className={classes.seDisplay2}>
               It help your company to be successfull, and we want to go up together
           </Typography>
           <div>
@@ -95,17 +94,28 @@ class LandingComponent extends React.Component {
                       src={loadingbtn}
                       alt=""
                       style={{width:'100%', height:'40px'}} />
-                    : "SEND"}
+                    : 
+                    <Typography
+                      btnTextWeight
+                      style={{color: "#fff"}}
+                      variant="subtitle2" >
+                      Send
+                    </Typography>
+                    }
                     </Button>
             </div>
             <p
-               className={classNames(classes.sendEmailMsg,classes.font)}
-               style={{color: 'green'}}>{this.state.checkMessage}</p>
+             className={classNames(classes.sendEmailMsg,classes.font)}
+             style={{color: 'green'}}>
+             {this.state.checkMessage}
+            </p>
             <p 
-              className={classNames(classes.sendEmailMsg,classes.font)}
-              style={{color: 'red'}}>{this.state.alertMessage}</p>
+             className={classNames(classes.sendEmailMsg,classes.font)}
+             style={{color: 'red'}}>
+             {this.state.alertMessage}
+            </p>
           </div>
-          <Typography variant="caption" className={classes.seDisplay3}>
+          <Typography className={classes.seDisplay3}>
               {subText1}
               <Atag
                 className={classes.agreeText}
@@ -118,7 +128,6 @@ class LandingComponent extends React.Component {
                 Teams of service </Atag>.
           </Typography>
           <Typography
-            variant="caption"
             className={classNames(classes.seDisplay4,classes.font)}>
               This page is going to show the description about enLight, as a lending-page.
           </Typography>
