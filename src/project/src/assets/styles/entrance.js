@@ -1,17 +1,21 @@
-
-const drawerWidth = 240;
-
 const styles = theme => ({
   entrance: {
     display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    //marginLeft: '-66px',
   },
-  gridList: {
-    width: 500,
-    height: 450,
+  cardWrap: {
+    border: '1px solid #edeff0',
+    backgroundColor: '#f9fafa',
+    maxWidth: `${(290*3)+3}px`,
+    marginBottom: '8px',
+    float: 'left',
+    paddingBottom: '10px'
+  },
+  bottomTextWrap:{
+    width:'100%', display: 'flex'
   },
   titleBar: {
     background:

@@ -58,10 +58,11 @@ const styles = theme => ({
     ...theme.mixins.toolbar,
   },
   content: {
-    overflowX: 'scroll',
+    overflowX: 'auto',
     flexGrow: 1,
     height: '100%',
-    backgroundColor: theme.palette.background.default,
+    //backgroundColor: theme.palette.background.default,
+    backgroundColor: '#fff',
     padding: theme.spacing.unit * 3,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,

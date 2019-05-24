@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import TextField from '@material-ui/core/TextField';
-import com from '../../../assets/styles/material/common'
+import {font} from '../../../assets/styles/material/com/index'
 import { makeStyles } from '@material-ui/styles';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
@@ -28,7 +28,7 @@ const Input = ({ ...state }) => {
   const useStyles = makeStyles({
     defaultInput:{
       fontFamily: 'montserrat',
-      fontWeight: com.fontWeight,
+      fontWeight: font.fontWeight,
       height: '50px',
       '&>div':{
         fontSize: '14px',

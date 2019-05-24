@@ -22,7 +22,6 @@ const BgNoneBtn = ({ ...state }) => {
     <Button
         { ...other}
         color="primary"
-       
         style={bgNoneBtn}>
          {children}
     </Button>
