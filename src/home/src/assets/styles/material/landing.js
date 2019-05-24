@@ -1,12 +1,22 @@
 import com from './common'
 const landing = theme => ({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'absolute',
+      right: '0',
+      left: '0',
+      bottom: '0',
+      top: '0'
+    },
     footer: {
         backgroundColor: '#2D3135',
-        position: 'fixed',
-        left: 0,
-        bottom: 0,
+        //position: 'fixed',
+        //left: 0,
+        //bottom: 0,
         width: '100%',
-        height: '300px',
+        flex:1,
+        //height: '30%',
         color: 'white',
       },
       siteMap:{
@@ -15,12 +25,21 @@ const landing = theme => ({
         left: '2%',
         bottom: '2%',
       },
+      divMiddleWrap:{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        flex: 2,
+        paddingTop: 'auto',
+        paddingBottom: 'auto',
+        marginTop: '69px',
+      },
       divMiddle: {
-        position: 'absolute',
-        bottom: '45%',
-        flex: 0.6,
+        //position: 'absolute',
+        //bottom: '45%',
+        //flex: 0.6,
         alignItems: 'center',
-        width: '99.4%',
+        //width: '99.4%',
         display: 'flex',
         flexDirection: 'column'
       },
