@@ -15,7 +15,8 @@ class Main extends React.Component {
         })} style={{
       }}>
         <div className={classes.toolbar} />
-        <Route exact path="/" component={ENTRANCE} />
+        <Route exact path="/" component={HOME} />
+        {/* <Route exact path="/" component={ENTRANCE} /> */}
         <Route exact path="/ws" component={HOME} />
       </main>
     )

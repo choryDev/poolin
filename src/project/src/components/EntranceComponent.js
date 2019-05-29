@@ -42,7 +42,6 @@ class EntranceComponent extends React.Component {
     if (this.state.loading) {
       return;
     };
-    console.log('hahah');
     sendData(`/api/request/reset_password`, 'POST', {}, {
       newCardNm: this.state.newCardNm,
       newCardWb: this.state.newCardWb,
