@@ -1,15 +1,17 @@
 import color from '../styles/material/com/color'
 
 const drawerWidth = 240;
-
+const toolbarHeight = 72;
 const styles = theme => ({
   root: {
     display: 'flex',
   },
   appBarHeight: {
-    height: '72px'
+    justifyContent: 'space-between',
+    height: toolbarHeight
   },
   appBar: {
+    backgroundColor: color.white.headerWhite,
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -23,6 +25,18 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
+  },
+   headerTitle:{
+    display: 'inline-block'
+  },
+  headerAvartar: {
+    width: '30px',
+    height: '30px',
+    marginTop: '25px',
+    marginBottom: '25px',
+  },
+  headerAvartarClose: {
+    marginRight: '16px'
   },
   menuButton: {
     marginLeft: 12,
@@ -69,6 +83,9 @@ const styles = theme => ({
     minHeight: '36px',
     //...theme.mixins.toolbar,
   },
+  headerInput: {
+    padding: '9px 14px',
+  },
   iconOpen:{
     color: '#fff',
     transition: 'all ease 2s 0s',
@@ -87,6 +104,10 @@ const styles = theme => ({
     color: 'white',
     paddingTop: '6px',
     paddingBottom: '6px',
+  },
+  ProjectItem:{
+    justifyContent: 'space-between',
+    paddingRight: '8px'
   },
   ListWrap: {
     paddingTop: '0',
@@ -112,9 +133,11 @@ const styles = theme => ({
     marginTop: '16px'
   },
   content: {
+
     overflowX: 'auto',
+    //overflowY: 'hidden',
     flexGrow: 1,
-    height: '100%',
+    height: `calc(100% - ${toolbarHeight}px)`,
     //backgroundColor: theme.palette.background.default,
     backgroundColor: '#fff',
     padding: theme.spacing.unit * 3,
@@ -125,6 +148,7 @@ const styles = theme => ({
     marginLeft: 90 - 24,
   },
   contentShift: {
+    marginTop: toolbarHeight,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,

@@ -40,9 +40,6 @@ const Input = ({ ...state }) => {
     <MuiThemeProvider theme={theme}>
       <TextField
         {...other}
-        InputProps={{
-            readOnly: readOnly ? true : false,
-          }}
         className={classNames(className,classes.defaultInput)}
         margin="normal"
         variant="outlined"/>
