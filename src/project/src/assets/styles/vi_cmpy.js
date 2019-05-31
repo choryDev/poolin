@@ -10,6 +10,9 @@ const styles = theme => ({
     flexDirection: 'column',
     display: 'flex',
   },
+  flex:{
+    display: 'flex'
+  },
   wrap:{
      display: 'flex',
      flex: 30
@@ -42,6 +45,33 @@ const styles = theme => ({
     '&:nth-child(1)':{
       marginBottom: '24px'
     },
+  },
+  wrap003:{
+    height: `calc(100% - ${48}px)`,
+    overflowY: 'hidden',
+    margin: '24px 33px',
+    paddingRight: '15px',
+    '&:hover':{
+      paddingRight: '0',
+      overflowY: 'auto',
+     },
+  },
+  btn003:{
+    height: '36px',
+    textDecoration: "none",
+  },
+  checkOff:{
+    color:color.gray.placeHoldGray
+  },
+  checkOn:{
+    color: '#198652'
+  },
+  textWrap003:{
+    width: 'calc(100% - 48px)', 
+    borderBottom: `2px solid ${color.gray.placeHoldGray}`
+  },
+  Input003:{
+    width: 'calc(100% - 80px)', 
   }
 }); 
 

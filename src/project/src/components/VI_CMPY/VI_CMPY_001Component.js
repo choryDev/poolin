@@ -1,23 +1,6 @@
 import React from 'react'
 import Workspace from '../internal/Workspace';
 import classNames from 'classnames';
-import Drawer from "@material-ui/core/Drawer";
-import IconButton from "@material-ui/core/IconButton";
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import Divider from "@material-ui/core/Divider";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Button from "@material-ui/core/Button";
-
-import Add from '@material-ui/icons/Add';
-import Home from '@material-ui/icons/Home';
-import Brightness1 from '@material-ui/icons/Brightness1';
-import CheckCircleOutlined from '@material-ui/icons/CheckCircleOutlined';
-import Notifications from '@material-ui/icons/Notifications';
-import MoreHoriz from '@material-ui/icons/MoreHoriz';
-
 import color from '../../assets/styles/material/com/color'
 
 import { PositionCard, Typography, TaskCard, CandidateCard, HistoryCard } from '../unit/index'
