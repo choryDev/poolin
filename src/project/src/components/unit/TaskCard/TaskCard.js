@@ -1,12 +1,8 @@
 import React from 'react';
-import classNames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
 import Avatar from '@material-ui/core/Avatar';
-import { font } from '../../../assets/styles/material/com/index'
 import { Typography } from '../index'
 import Card from '@material-ui/core/Card';
-import Brightness1 from '@material-ui/icons/Brightness1';
-import CardContent from '@material-ui/core/CardContent';
 
 const TaskCard = ({ ...state }) => {
 

@@ -34,6 +34,7 @@ const styles = theme => ({
     height: '30px',
     marginTop: '25px',
     marginBottom: '25px',
+    cursor: 'pointer'
   },
   headerAvartarClose: {
     marginRight: '16px'
@@ -86,6 +87,20 @@ const styles = theme => ({
   headerInput: {
     padding: '9px 14px',
   },
+  avatMenu:{
+    '& div:nth-child(2)':{
+      top: '56px !important',
+      left: `calc(100% - ${216}px) !important`,
+      right: '24px'
+    }
+  },
+  textCenter:{
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  MenuItem:{
+    padding: '8px 16px'
+  },
   iconOpen:{
     color: '#fff',
     transition: 'all ease 2s 0s',
@@ -133,7 +148,7 @@ const styles = theme => ({
     marginTop: '16px'
   },
   content: {
-
+    marginTop: toolbarHeight,
     overflowX: 'auto',
     //overflowY: 'hidden',
     flexGrow: 1,
@@ -148,7 +163,6 @@ const styles = theme => ({
     marginLeft: 90 - 24,
   },
   contentShift: {
-    marginTop: toolbarHeight,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
