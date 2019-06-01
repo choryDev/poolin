@@ -53,8 +53,9 @@ class LandingComponent extends React.Component {
     const subText1 = 'By signing up, I agree to enLight ';
     const subText2 = ' and ';
     return (
-      <div>
+      <div className={classes.root}>
         <HeaderConatainer />
+        <div className={classes.divMiddleWrap}>
         <div className={classes.divMiddle}>
           <Typography
             variant="h3"
@@ -132,6 +133,7 @@ class LandingComponent extends React.Component {
               This page is going to show the description about enLight, as a lending-page.
           </Typography>
           </div>
+        </div>
         <div className={classes.footer}>
           <Atag href={"/Sign_001"}>
             <Typography
