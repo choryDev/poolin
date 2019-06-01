@@ -13,7 +13,7 @@ import {inWorkspace} from './actions/behave/ConfigAction';
 class AppComponent extends React.Component {
   state = {
     workspace: false,
-    openMenu: false
+    openMenu: true
   };
 
   constructor(props){
@@ -35,9 +35,7 @@ class AppComponent extends React.Component {
       openMenu: false
     })
   }
-
-
-
+  
   handleWorkspace(){
     store.dispatch(inWorkspace(true))
   }

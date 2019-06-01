@@ -19,8 +19,7 @@ class HeaderComponent extends React.Component {
   }
 
   render() {
-
-    const { classes, theme, handleOpen, workspace } = this.props;
+    const { classes, handleOpen, workspace } = this.props;
     const APP = () =>
       <AppBar
         position="fixed"
@@ -28,7 +27,9 @@ class HeaderComponent extends React.Component {
           [classes.appBarShift]: this.props.open,
         })}
       >
-        <Toolbar disableGutters={!this.props.open}>
+        <Toolbar 
+          className={classes.appBarHeight}
+          disableGutters={!this.props.open}>
           <IconButton
             color="inherit"
             aria-label="Open drawer"
