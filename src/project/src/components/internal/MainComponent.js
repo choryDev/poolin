@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import style from '../../assets/styles/header'
-import {HOME, ENTRANCE} from '../../pages/index.async';
 import {withStyles} from "@material-ui/core";
 import classNames from 'classnames';
+import {HOME, ENTRANCE,VI_CMPY_001} from '../../pages/index.async';
 
 class Main extends React.Component {
   render() {
@@ -12,11 +12,11 @@ class Main extends React.Component {
       <main
         className={classNames(classes.content, {
           [classes.contentShift]: this.props.open
-        })} style={{
+        })} style={{ 
       }}>
-        <div className={classes.toolbar} />
-        <Route exact path="/" component={HOME} />
+        <Route exact path="/" component={VI_CMPY_001} />
         {/* <Route exact path="/" component={ENTRANCE} /> */}
+        <Route exact path="/VI_CMPY_001" component={VI_CMPY_001} />
         <Route exact path="/ws" component={HOME} />
       </main>
     )

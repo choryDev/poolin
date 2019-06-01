@@ -59,7 +59,7 @@ class LeftComponent extends React.Component {
              className={this.props.open ? classes.iconOpen : classes.iconClose }>
              {r.Icon}</ListItemIcon>
               <Typography
-                fontWeight={2}
+                fontWeight={1}
                 color={this.props.open ? '#fff' : color.gray.default}>
                 {r.name}
               </Typography>
@@ -71,7 +71,9 @@ class LeftComponent extends React.Component {
       <List className={classes.ListWrap}>
         {arr.map((r, index) => (
           <ListItem 
-            className={classNames(classes.toolbarItem,
+            className={classNames(
+              classes.toolbarItem,
+              classes.ProjectItem,
             this.props.open ? classes.toolbarItemOP : null)}
             button key={index}>
             <div style={{display: 'flex'}}>
@@ -82,7 +84,7 @@ class LeftComponent extends React.Component {
                className={classes.BrightBtn}>
               </Brightness1>
                 <Typography
-                  fontWeight={2}
+                  fontWeight={1}
                   color={this.props.open ?
                                r.num === 0 ? color.gray.offGray : '#fff'
                                : color.gray.offGray}>
