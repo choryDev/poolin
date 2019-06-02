@@ -6,7 +6,7 @@ const styles = theme => ({
     height: '100%',
   },
   root:{
-    padding: '0 24px',
+    height: '100%',
     flexDirection: 'column',
     display: 'flex',
   },
@@ -18,7 +18,7 @@ const styles = theme => ({
      flex: 30
   },
   contantWrap:{
-    padding: '24px 24px',
+    padding: '24px',
     '&:nth-child(2)':{
       height: `calc(100% - ${padding}px) !important`,
     }

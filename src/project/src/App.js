@@ -13,7 +13,7 @@ import {inWorkspace} from './actions/behave/ConfigAction';
 class AppComponent extends React.Component {
   state = {
     workspace: false,
-    openMenu: true
+    openMenu: true,
   };
 
   constructor(props){

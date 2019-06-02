@@ -14,10 +14,10 @@ class Main extends React.Component {
           [classes.contentShift]: this.props.open
         })} style={{ 
       }}>
-        <Route exact path="/" component={VI_CMPY_003} />
+        <Route exact path="/" component={VI_CMPY_001} />
         {/* <Route exact path="/" component={ENTRANCE} /> */}
         <Route exact path="/VI_CMPY_001" component={VI_CMPY_001} />
-        <Route exact path="/VI_CMPY_001" component={VI_CMPY_003} />
+        <Route exact path="/Tasks" component={VI_CMPY_003} />
         <Route exact path="/ws" component={HOME} />
       </main>
     )
