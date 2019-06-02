@@ -10,6 +10,9 @@ const color = {
   },
   white: {
     headerWhite: '#F6F8F9'
+  },
+  green: {
+    onGreen: '#6AD790'
   }
 }
 export default color;

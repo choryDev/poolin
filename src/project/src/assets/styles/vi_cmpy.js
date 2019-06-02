@@ -30,13 +30,11 @@ const styles = theme => ({
   },
   itemW:{
     height: `calc(100% - ${48}px)`,
-    overflowY: 'hidden',
-    '&:hover':{
-      overflowY: 'auto',
-     }
+    overflowY: 'auto',
+    paddingRight: '24px',
    },
   contant:{
-    padding: '16px 24px',
+    padding: '16px 0 16px 24px',
     backgroundColor: color.white.headerWhite,
     boxShadow: '0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
   },

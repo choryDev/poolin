@@ -17,9 +17,10 @@ const TaskCard = ({ ...state }) => {
 
   const useStyles = makeStyles({
      cardRoot:{
-       display: 'flex',
-       padding: '12px',
-       marginBottom: '8px'
+      height: '100px',
+      display: 'flex',
+      padding: '12px',
+      marginBottom: '8px'
      },
      Wrap:{
       display: 'flex',
@@ -53,7 +54,7 @@ const TaskCard = ({ ...state }) => {
   return (
     <Card className={classes.cardRoot} {...other}>
       <div
-        style={{justifyContent: 'center',marginRight: '8px'}}
+        style={{justifyContent: 'center',marginRight: '16px'}}
         className={classes.Wrap}>
         <Avatar 
           className={classes.avatar}
