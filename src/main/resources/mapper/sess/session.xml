@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="sess.session">
+
+    <select id="getIdUsingKey" parameterType="hmap" resultType="in.pool.server.dto.sign.UserKeyDto">
+        SELECT B.USER_NO AS userNo,
+               B.USERNAME AS username,
+               B.EMAIL AS email,
+               B.STATUS AS status,
+               B.INS_DT AS insertedDate,
+               B.UPT_DT AS updatedDate,
+               A.VALID_STAT AS validationStatus,
+               A.VALID_DT >= now() - INTERVAL 2 DAY AS availYn
+          FROM SRV_USR_AUTH A
+               JOIN (SELECT *
+                       FROM SRV_USR_MST
+                      WHERE EMAIL = #{email}) B ON A.USER_NO = B.USER_NO
+         WHERE A.VALID_CD = #{key}
+    </select>
+
+    <insert id="insertUserSess" parameterType="hmap">
+          INSERT INTO SRV_USR_SESS(
+            USER_NO,
+            SESS_TP,
+            SESS_KEY,
+            SALT,
+            INS_DT
+          )VALUES(
+            #{sess_user_no},
+            #{access_tp},
+            #{sess_auth_key},
+            #{sess_salt},
+            #{sessNow}
+          )
+    </insert>
+
+    <delete id="deleteUserSess" parameterType="hmap">
+          DELETE FROM SRV_USR_SESS
+           WHERE USER_NO = #{sess_user_no}
+             AND SESS_TP = #{access_tp}
+    </delete>
+
+    <select id="chkIdDuplicate" parameterType="hmap" resultType="string">
+        SELECT USER_NO
+          FROM SRV_USR_MST
+         WHERE USERNAME = #{username}
+    </select>
+
+    <select id="findUserAtResetPassword" parameterType="hmap" resultType="in.pool.server.dto.sign.UserFindPasswordDto">
+        select a.user_no as userNo,
+               a.username,
+               a.email,
+               a.status,
+               b.valid_cd as validationCode,
+               b.ins_dt >= now() - INTERVAL 2 DAY AS availYn
+          from (select *
+                  from srv_usr_mst
+                 where email = 'ijunc2@gmail.com'
+                   and status = '100-002') a
+               join srv_usr_findpw b on a.user_no = b.user_no
+    </select>
+
+    <select id="checkSessionByProject" parameterType="hmap" resultType="in.pool.server.dto.types.InSession">
+          SELECT A.USER_NO as userNo,
+                 A.USERNAME as username,
+                 A.EMAIL as email,
+                 A.STATUS as status,
+                 B.SALT as salt,
+                 B.INS_DT,
+                 C.WRKS_NO AS workspaceNo,
+                 c.WRKS_ID AS workspaceId,
+                 C.AUTH_TP AS workspaceAuth,
+                 projectNo,
+                 projectId,
+                 belongType as projectBelongType,
+                 projectAuthType,
+                 projectType,
+                 projectStatus
+            FROM (SELECT *
+                    FROM SRV_USR_MST
+                   WHERE STATUS = '100-002') A
+                 JOIN (SELECT *
+                         FROM SRV_USR_SESS
+                        WHERE SESS_KEY = #{sess_auth_key}) B ON A.USER_NO = B.USER_NO
+                 JOIN (SELECT A.WRKS_NO,
+                              A.WRKS_ID,
+                              B.USER_NO,
+                              B.AUTH_TP,
+                              B.STATUS
+                         FROM (SELECT *
+                                FROM SRV_WRKS_MST
+                                WHERE WRKS_ID = #{sess_workspace_id}) A
+                                JOIN SRV_WRKS_MEM B ON A.WRKS_NO = B.WRKS_NO
+                         WHERE B.STATUS = '100-002') C ON B.USER_NO = C.USER_NO
+                 JOIN (SELECT A.PRJT_NO AS projectNo,
+                               A.PRJT_ID AS projectId,
+                               A.BELONG_TP AS belongType,
+                               B.AUTH_TP AS projectAuthType,
+                               B.USER_NO,
+                               A.PRJT_TP AS projectType,
+                               A.PRJT_STAT AS projectStatus
+                          FROM (SELECT *
+                                  FROM SRV_PRJT_MST
+                                 WHERE PRJT_ID = #{sess_project_id}) A
+                               JOIN SRV_PRJT_MEM B ON A.PRJT_NO = B.PRJT_NO
+                         WHERE B.STATUS = '100-002') D ON B.USER_NO = D.USER_NO
+    </select>
+    <select id="checkSessionByWorkspace" parameterType="hmap" resultType="in.pool.server.dto.types.InSession">
+          SELECT A.USER_NO as userNo,
+                 A.USERNAME as username,
+                 A.EMAIL as email,
+                 A.STATUS as status,
+                 B.SALT as salt,
+                 B.INS_DT,
+                 C.WRKS_NO AS workspaceNo,
+                 c.WRKS_ID AS workspaceId,
+                 C.AUTH_TP AS workspaceAuth
+            FROM (SELECT *
+                    FROM SRV_USR_MST
+                   WHERE STATUS = '100-002') A
+                 JOIN (SELECT *
+                         FROM SRV_USR_SESS
+                        WHERE SESS_KEY = #{sess_auth_key}) B ON A.USER_NO = B.USER_NO
+                 JOIN (SELECT A.WRKS_NO,
+                              A.WRKS_ID,
+                              B.USER_NO,
+                              B.AUTH_TP,
+                              B.STATUS
+                         FROM (SELECT *
+                                FROM SRV_WRKS_MST
+                                WHERE WRKS_ID = #{sess_workspace_id}) A
+                                JOIN SRV_WRKS_MEM B ON A.WRKS_NO = B.WRKS_NO
+                         WHERE B.STATUS = '100-002') C ON B.USER_NO = C.USER_NO
+    </select>
+
+    <select id="checkSessionByMe" parameterType="hmap" resultType="in.pool.server.dto.types.InSession">
+      SELECT A.USER_NO as userNo,
+             A.USERNAME as username,
+             A.EMAIL as email,
+             A.STATUS as status,
+             B.SALT as salt,
+             B.INS_DT
+        FROM (SELECT *
+                FROM SRV_USR_MST
+               WHERE STATUS = '100-002') A
+             JOIN (SELECT *
+                     FROM SRV_USR_SESS
+                    WHERE SESS_KEY = #{sess_auth_key}) B ON A.USER_NO = B.USER_NO
+
+    </select>
+
+
+</mapper>

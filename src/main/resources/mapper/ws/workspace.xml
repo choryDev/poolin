@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="ws.workspace">
+
+    <select id="myStatusInWorkspace" parameterType="hmap" resultType="in.pool.server.dto.workspace.mapping.MyStatusWorkspace">
+        select B.WRKS_NO as workspaceNo,
+               B.USER_NO as userNo,
+               B.AUTH_TP as authType,
+               B.STATUS as status,
+               B.INS_DT AS insertedDate
+          from (select *
+                  from srv_wrks_mst
+                 where wrks_id = #{workspace_id}) a
+               join srv_wrks_mem b on a.wrks_no = b.wrks_no
+         where b.user_no = #{sess_user_no}
+           and status = '100-001'
+    </select>
+
+    <delete id="deleteMemberWorkspace" parameterType="hmap">
+      DELETE FROM SRV_WRKS_MEM
+       WHERE WRKS_NO = #{sess_workspace_no}
+         AND USER_NO = #{sess_user_no}
+    </delete>
+
+</mapper>

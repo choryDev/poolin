@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="sess.user">
+
+    <select id="myWorkspaceList" parameterType="hmap" resultType="hmap">
+        select B.WRKS_ID as workspace_id,
+               if(c.wrks_nm is null, '', c.wrks_nm) as ws_name,
+               if(c.description is null, '', c.description) as ws_description,
+               a.auth_tp as auth_tp
+          from (select *
+                  from srv_wrks_mem
+                 where user_no = 123
+                   and status = '100-002') a
+               join srv_wrks_mst b on a.wrks_no = b.wrks_no
+               join srv_wrks_info c on a.wrks_no = c.wrks_no
+    </select>
+
+</mapper>
