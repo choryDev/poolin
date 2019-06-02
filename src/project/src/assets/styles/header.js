@@ -7,7 +7,6 @@ const styles = theme => ({
     display: 'flex',
   },
   appBarHeight: {
-    justifyContent: 'space-between',
     height: toolbarHeight
   },
   appBar: {
@@ -85,6 +84,7 @@ const styles = theme => ({
     //...theme.mixins.toolbar,
   },
   headerInput: {
+    marginLeft: 'auto',
     padding: '9px 14px',
   },
   avatMenu:{

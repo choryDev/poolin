@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -19,14 +20,14 @@ import MoreHoriz from '@material-ui/icons/MoreHoriz';
 
 import color from '../../assets/styles/material/com/color'
 
-import { ToolBarAvatar, Typography } from '../unit/index'
+import { ToolBarAvatar, Typography, Atag } from '../unit/index'
 
 const MenuArr =  [
-    {name: 'Home' , Icon:<Home /> },
-    {name: 'Calender' , Icon:<CheckCircleOutlined /> },
-    {name: 'My Tasks' , Icon:<CheckCircleOutlined /> },
-    {name: 'Inbox' , Icon:<Notifications /> },
-    {name: 'Reports' , Icon:<Notifications /> },
+    {name: 'Home' , Icon:<Home />,url: '/Tasks' },
+    {name: 'Calender' , Icon:<CheckCircleOutlined />,url: '/Tasks' },
+    {name: 'My Tasks' , Icon:<CheckCircleOutlined />,url: '/Tasks' },
+    {name: 'Inbox' , Icon:<Notifications />,url: '/Tasks' },
+    {name: 'Reports' , Icon:<Notifications />,url: '/Tasks' },
   ];
 
 const PrjArr =  [
@@ -51,19 +52,24 @@ class LeftComponent extends React.Component {
     const MenuList__Component = (arr) =>
       <List className={classes.ListWrap}>
         {arr.map((r, index) => (
-          <ListItem 
-            className={classNames(classes.toolbarItem,
-            this.props.open ? classes.toolbarItemOP : null)}
-            button key={index}>
-            <ListItemIcon
-             className={this.props.open ? classes.iconOpen : classes.iconClose }>
-             {r.Icon}</ListItemIcon>
-              <Typography
-                fontWeight={1}
-                color={this.props.open ? '#fff' : color.gray.default}>
-                {r.name}
-              </Typography>
-          </ListItem>
+          <Atag 
+            onClick={()=>this.props.changeHeaderTitle(r.name)}
+            key={index}
+            href={r.url}>
+              <ListItem 
+                className={classNames(classes.toolbarItem,
+                this.props.open ? classes.toolbarItemOP : null)}
+                button >
+                <ListItemIcon
+                 className={this.props.open ? classes.iconOpen : classes.iconClose }>
+                 {r.Icon}</ListItemIcon>
+                  <Typography
+                    fontWeight={1}
+                    color={this.props.open ? '#fff' : color.gray.default}>
+                    {r.name}
+                  </Typography>
+              </ListItem>
+          </Atag >
         ))}
     </List>;
 

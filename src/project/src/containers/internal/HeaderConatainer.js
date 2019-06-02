@@ -4,7 +4,8 @@ import HeaderComponent from '../../components/internal/HeaderComponent';
 import style from '../../assets/styles/header';
 
 const mapState = state => ({
-  workspace: state.ConfigReducer.toJS().workspace
+  workspace: state.ConfigReducer.toJS().workspace,
+  headerMainTitle: state.HeaderReducer.toJS().headerMainTitle,
 });
 
 const mapDispatch = dispatch => ({
