@@ -15,6 +15,7 @@ root:{
     backgroundColor: color.white.headerWhite,
   },
   menuIcon:{
+    zIndex: 3,
     marginRight: '8px',
     width: '1.8rem',
     height: '1.8rem',
@@ -34,13 +35,14 @@ root:{
     marginBottom: '8px'
   },
   hr:{
+    zIndex: 2,
     position: 'absolute',
     margin: 0,
     height: '30px',
     width: '1px',
-    border: `1px solid ${color.gray.placeHoldGray}`,
+    border: `1.5px solid ${color.gray.placeHoldGray}`,
     top: '28px',
-    left: '14px',
+    left: '13px',
     '&:nth-child(6)':{
       border: 'none'
     }
