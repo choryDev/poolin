@@ -130,9 +130,7 @@ class HeaderComponent extends React.Component {
               <MenuIcon 
                 style={{color: color.gray.weakGray}}/>
             </IconButton>
-
           {DefaultHeader__Component()}
-
             <div>
               <Avatar
                 className={classNames(classes.headerAvartar,{

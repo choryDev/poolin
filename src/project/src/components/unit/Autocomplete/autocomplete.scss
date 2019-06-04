@@ -1,0 +1,126 @@
+$bordercolor:rgba(0, 0, 0, 0.23);
+$focusbodercolor: #2196f3;
+$fontcolor: #4c565c;
+$fontWeight: 400;
+$width: 195px;
+.autoComplete{
+  position: relative;
+  font-weight: $fontWeight;
+  color: $fontcolor;
+  .viewValue{
+    font-weight: $fontWeight;
+    color: $fontcolor;
+    width: $width;
+    z-index: 2;
+    display: block;
+    border-radius: 4px;
+    padding: 8px 10px;
+    transition: all .15s cubic-bezier(.68, -.55, .265, 1.55);
+    border: 1px solid $bordercolor;
+    background-color: #fff;
+    position: relative;
+    input::placeholder{
+      color: black;
+    }
+    &:hover{
+      cursor: pointer;
+      background-color: #edeff0;
+    }
+    &:focus { 
+      color: #788594;
+      border: 2px solid $focusbodercolor;
+      outline: 0;
+      background-color: #fff;
+      box-shadow: 0 3px 9px rgba(53, 53, 9, 0), 3px 4px 8px rgba(94, 114, 228, .1);
+      padding: 7px 9px;
+   }
+  }
+  .fa-caret-down{
+    position: absolute;
+    top: 10px;
+    z-index: 3;
+    right: 8px;
+    font-size: 14px;
+  }
+  .fullWidth{
+    width: 100%;
+  }
+  .show-span{
+    border: 1px solid $bordercolor;
+    z-index: 4;
+    margin-top: 8px;
+    position: absolute;
+    border-radius: 4px;
+    .inputarea{
+      border-radius: 4px;
+      width: 194px;
+      background-color: white;
+      input{
+        font-weight: $fontWeight;
+        color: $fontcolor;
+        border: 2px solid white;
+        border-radius: 4px;
+        font-weight: 200;
+        width: 178px;
+        margin: 8px;
+        padding: 6px 10px;
+        line-height: 1.5rem;
+        transition: all .15s cubic-bezier(.68, -.55, .265, 1.55);
+        box-shadow: 0 3px 2px rgba(233, 236, 239, .05);
+        &:focus {
+          color: $fontcolor;
+          border: 2px solid $focusbodercolor;
+          outline: 0;
+          background-color: #fff;
+          box-shadow: 0 3px 9px rgba(50, 50, 9, 0), 3px 4px 8px rgba(94, 114, 228, .1);
+       }
+       &:hover{
+        cursor: pointer;
+        background-color: #edeff0;
+      }
+      }
+    }
+  }
+  .scrollbeauti{
+    z-index: 2;
+    background-color: white;
+    padding-bottom: .4rem;
+    border-radius: 0 0 .4375rem .4375rem;
+    border-bottom: 1px solid $bordercolor;
+    .itemList{
+      display: flex;
+      flex-direction: column;
+      max-height: 8rem;
+      overflow-y: auto;
+      overflow-x: auto;
+      .item{
+        font-weight: $fontWeight;
+        font-size: .825rem;
+        padding: 0 4px;
+        border-radius: 4px;
+        line-height: 32px;
+        color: rgba(0, 0, 0, 0.6);
+        background-color: white;
+        margin: 0 .75rem;
+        &:hover{
+          cursor: pointer;
+          background-color: #edeff0;
+        }
+        &:nth-last-child(1){
+          margin-bottom: .5rem;
+        }
+      }
+    }
+  }
+  .my-autoComplete-bg{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    z-index: 1;
+  }
+}
+.defaultAutoComplete{
+  width: $width;
+}

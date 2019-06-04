@@ -14,60 +14,16 @@ import CardTravel from '@material-ui/icons/CardTravel';
 import Speaker from '@material-ui/icons/Speaker';
 import classNames from 'classnames';
 import color from '../../assets/styles/material/com/color'
-
-import Step01 from '../../containers/VI_POL/VI_POL_101Container'
-import { Typography } from '../unit/index'
+import { PositionCard, Typography, TaskCard, CandidateCard, HistoryCard } from '../unit/index'
 
 const state = {
   step: 0,
-  pstTitle: 'New Position',
 }
 
 class VI_POL_ModalComponent extends React.Component {
   constructor(props){
     super(props);
     this.state=state;
-    this.handleChanged = this.handleChanged.bind(this);
-    this.handleStep = this.handleStep.bind(this);
-    this.step__Component = this.step__Component.bind(this);
-  }
-
-  handleChanged(e){
-    const {name, value} = e.target;
-    this.setState({
-      [name] : value
-    })
-  }
-
-  handleStep(){
-    var obj ={
-      step: ++this.state.step
-    }
-    if(this.state.step >4)
-      return
-   else
-    this.setState(obj);
-  }
-
-  step__Component(){
-    switch(this.state.step){
-      case 0 :  return (
-         <Step01
-          handleHeaderChanged={e=>this.handleChanged(e)}/>
-         );
-      case 1 :  return (
-          <Step01/>
-        );
-      case 2 :  return (
-          <Step01/>
-        );
-      case 3 :  return (
-          <Step01/>
-        );
-      default:  return (
-        <div/>
-      );
-    }
   }
 
   render() {
@@ -102,8 +58,8 @@ class VI_POL_ModalComponent extends React.Component {
       <List className={classes.menu}>
       {MenuArr.map((r, index) => (
         <ListItem 
-          className={classes.dontTouch}
-          key={index}>
+           key={index}
+          button >
           <div style={{position: 'relative'}}>
             {r.Icon}
             {index === 5 ? null : <hr className={classes.hr}/>}
@@ -111,7 +67,8 @@ class VI_POL_ModalComponent extends React.Component {
             <Typography
               variant={'caption'}
               fontWeight={2}
-              className={classes.menuText}>
+              className={classes.menuText}
+              color={this.state.step === index ? color.green.onGreen : color.gray.weakGray}>
               {r.name}
             </Typography>
           </ListItem>
@@ -124,20 +81,13 @@ class VI_POL_ModalComponent extends React.Component {
           aria-labelledby="customized-dialog-title"
           open={open}>
             <DialogTitle disableTypography className={classes.title}>
-              <Typography color={"#fff"} fontWeight={2} variant="h6">
-               {this.state.pstTitle}
-              </Typography>
+              <Typography color={"#fff"} fontWeight={2} variant="h6">New Position</Typography>
             </DialogTitle>
             <div className={classes.contentWrap}>
               {Menu__Component()}
               <div className={classes.content}>
-                <div className={classes.stepWrap}>
-                  {this.step__Component()}
-                </div>
                 <DialogActions className={classes.footer}>
-                  <Button
-                    onClick={this.handleStep}
-                    className={classes.stepBtn}>
+                  <Button className={classes.stepBtn}>
                     Save changes
                   </Button>
                 </DialogActions>
