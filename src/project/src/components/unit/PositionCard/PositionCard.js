@@ -18,6 +18,7 @@ const PositionCard = ({ ...state }) => {
 
   const useStyles = makeStyles({
      cardRoot:{
+       height: '100px',
        padding: '12px',
        marginBottom: '8px'
      },

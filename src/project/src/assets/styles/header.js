@@ -80,7 +80,7 @@ const styles = theme => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0 8px 0 16px',
-    minHeight: '36px',
+    minHeight: '72px',
     //...theme.mixins.toolbar,
   },
   headerInput: {
@@ -90,7 +90,7 @@ const styles = theme => ({
   avatMenu:{
     '& div:nth-child(2)':{
       top: '56px !important',
-      left: `calc(100% - ${216}px) !important`,
+      left: `calc(100% - ${200}px) !important`,
       right: '24px'
     }
   },
@@ -114,6 +114,10 @@ const styles = theme => ({
     borderColor: '#fff',
      '&:hover':
       { backgroundColor: color.gray.hoverGray },
+  },
+  menuIcon:{
+    width: '1.25rem',
+    height: '1.25rem',
   },
   toolbarItem:{
     color: 'white',
