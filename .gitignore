@@ -1,0 +1,58 @@
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+bin/
+
+### Visual Studio Code ###
+.vscode/
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+target/
+out/
+node_modules/
+package-lock.json
+
+yarn.lock
+yarn-error.log
+
+# Git
+# package-lock.json
+
+# bundles
+src/home/node_modules
+src/assi/node_modules
+src/main/resources/static/build/*
+src/main/resources/templates/home.html
+src/main/resources/templates/project.html
+src/main/resources/logback-spring.*
+#src/main/resources/application.properties
+
+#.DS_Store
+src/home/.DS_Store
+src/main/java/in/pool/api/.DS_Store
+
+logs/
+monitor/
+sql/
+.mvn

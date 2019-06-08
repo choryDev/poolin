@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <settings>
+        <setting name="cacheEnabled"              value="true"/>
+        <setting name="lazyLoadingEnabled"        value="false"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel"            value="true"/>
+        <setting name="useGeneratedKeys"          value="false"/>
+        <setting name="defaultExecutorType"      value="SIMPLE"/>
+        <setting name="defaultStatementTimeout"  value="25000"/>
+    </settings>
+
+    <typeAliases>
+        <typeAlias alias="hmap" type="java.util.HashMap"  />
+        <typeAlias alias="string" type="java.lang.String"  />
+        <typeAlias alias="int" type="java.lang.Integer"  />
+        <typeAlias alias="long" type="java.lang.Long"  />
+        <typeAlias alias="bool" type="java.lang.Boolean"  />
+    </typeAliases>
+
+    <mappers>
+        <!-- common -->
+        <mapper resource="mapper/comm/autokey.xml"/>
+        <mapper resource="mapper/comm/comm.xml"/>
+
+        <!-- session -->
+        <mapper resource="mapper/sess/session.xml"/>
+        <mapper resource="mapper/sess/user.xml"/>
+
+        <!-- workspace -->
+        <mapper resource="mapper/ws/workspace.xml"/>
+    </mappers>
+</configuration>

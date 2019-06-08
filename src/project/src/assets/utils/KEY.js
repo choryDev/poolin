@@ -1,0 +1,1 @@
+export const MRMENTION_TOKEN = 'mrmention_token'
