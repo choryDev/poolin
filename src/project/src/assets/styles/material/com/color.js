@@ -1,3 +1,4 @@
+
 const color = {
   defaultFontColor:'#4c565c',
   gray: {
@@ -13,6 +14,13 @@ const color = {
   },
   green: {
     onGreen: '#6AD790'
+  },
+  skyBlue:{
+    default: '#5ac0e5',
+    hover:'#3DADCC'
+  },
+  blue:{
+    default: '#2196f3'
   }
 }
 export default color;

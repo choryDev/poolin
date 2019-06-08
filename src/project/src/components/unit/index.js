@@ -8,6 +8,9 @@ import PositionCard from './PositionCard/PositionCard'
 import TaskCard from './TaskCard/TaskCard'
 import CandidateCard from './CandidateCard/CandidateCard'
 import HistoryCard from './HistoryCard/HistoryCard'
+import Select from './Select/Select'
+import Autocomplete from './Autocomplete/Autocomplete'
+import Checkbox from './Checkbox/Checkbox'
 
 export {
   BgNoneBtn,
@@ -19,5 +22,8 @@ export {
   PositionCard,
   TaskCard,
   CandidateCard,
-  HistoryCard 
+  HistoryCard,
+  Select,
+  Autocomplete,
+  Checkbox
 };
