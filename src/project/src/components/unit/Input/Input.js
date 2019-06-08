@@ -26,7 +26,6 @@ const Input = ({ ...state }) => {
 
   const useStyles = makeStyles({
     defaultInput:{
-      height: '50px',
       '& input':{
         fontFamily: font.fontFamily1,
         fontWeight: font.fontWeight[2],
@@ -42,8 +41,15 @@ const Input = ({ ...state }) => {
     },
     sm:{
       margin: 0,
-      height: '34px',
-      padding: 0
+      '& input':{
+        padding: '9px 10px',
+      }
+    },
+    md:{
+      margin: 0,
+      '& input':{
+        padding: '9px 10px',
+      }
     }
   })
   const classes = useStyles();

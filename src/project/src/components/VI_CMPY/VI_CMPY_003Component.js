@@ -116,7 +116,6 @@ class VI_CMPY_003Component extends Workspace {
             Imcomplete Tasks
         </Typography>
               <Button
-                
                style={{marginRight: '8px'}} variant="outlined" className={classes.btn003}>
                   <Typography
                   fontWeight={2}
@@ -125,9 +124,6 @@ class VI_CMPY_003Component extends Workspace {
                   </Typography>
               </Button>
               <Button
-
-onClick={()=>console.log(this.state.arr.toJS())}
-
               variant="outlined" className={classes.btn003}>
                 <Typography
                   fontWeight={2}

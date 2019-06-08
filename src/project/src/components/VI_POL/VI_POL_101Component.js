@@ -1,20 +1,7 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
-import List from '@material-ui/core/List';
-
-import People from '@material-ui/icons/People';
-import FormatListBulleted from '@material-ui/icons/FormatListBulleted';
-import ThumbUp from '@material-ui/icons/ThumbUp';
-import CardTravel from '@material-ui/icons/CardTravel';
-import Speaker from '@material-ui/icons/Speaker';
 import classNames from 'classnames';
-import color from '../../assets/styles/material/com/color'
 import blue from '@material-ui/core/colors/blue';
-import { Input, Typography, Autocomplete, Checkbox } from '../unit/index'
+import { Input, Typography, Autocomplete } from '../unit/index'
 
 import { countrys } from './dump'
 
@@ -58,8 +45,7 @@ class VI_POL_101Component extends React.Component {
         <Typography
           variant={'h5'}
           fontWeight={2}
-          onClick={console.log(this.state.country)}
-          className={classes.titleText}>
+          className={classNames(classes.titleText,classes.marginBtm30)}>
           Position Details
         </Typography>
         <Input 

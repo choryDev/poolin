@@ -131,7 +131,7 @@ class HeaderComponent extends React.Component {
                 style={{color: color.gray.weakGray}}/>
             </IconButton>
           {DefaultHeader__Component()}
-            <div>
+            <div style={{marginTop: '8px'}}>
               <Avatar
                 className={classNames(classes.headerAvartar,{
                   [classes.headerAvartarClose]: !this.props.open,

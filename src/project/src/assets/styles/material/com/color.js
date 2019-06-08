@@ -1,4 +1,3 @@
-
 const color = {
   defaultFontColor:'#4c565c',
   gray: {
@@ -7,7 +6,7 @@ const color = {
     hoverGray: '#575B5E',
     offGray: '#A9A9A9',
     cardGray: '#636F78',
-    placeHoldGray: '#CDCECE'
+    placeHoldGray: '#CDCECE',
   },
   white: {
     headerWhite: '#F6F8F9'

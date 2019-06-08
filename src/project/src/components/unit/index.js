@@ -9,8 +9,10 @@ import TaskCard from './TaskCard/TaskCard'
 import CandidateCard from './CandidateCard/CandidateCard'
 import HistoryCard from './HistoryCard/HistoryCard'
 import Select from './Select/Select'
-import Autocomplete from './Autocomplete/Autocomplete'
+import {Autocomplete, Autocomplete2} from './Autocomplete/index'
 import Checkbox from './Checkbox/Checkbox'
+import ThreeRadioButton from './ThreeRadioButton/ThreeRadioButton'
+import RequiredButton from './RequiredButton/RequiredButton'
 
 export {
   BgNoneBtn,
@@ -25,5 +27,8 @@ export {
   HistoryCard,
   Select,
   Autocomplete,
-  Checkbox
+  Checkbox,
+  ThreeRadioButton,
+  RequiredButton,
+  Autocomplete2
 };

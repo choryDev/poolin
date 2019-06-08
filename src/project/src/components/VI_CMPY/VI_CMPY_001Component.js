@@ -122,12 +122,6 @@ class VI_CMPY_001Component extends Workspace {
 
   render() {
         const { classes } = this.props;
-        const wrap = {
-           paddingRight: '15px',
-           '&:hover':{
-             paddingRight: '0',
-            }
-          }
         const HeaderTitel=(weight,va,color,content,mr,mb) =>
          <Typography
           style={{
