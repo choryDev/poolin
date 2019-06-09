@@ -1,101 +1,141 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-
-import People from '@material-ui/icons/People';
-import FormatListBulleted from '@material-ui/icons/FormatListBulleted';
-import ThumbUp from '@material-ui/icons/ThumbUp';
-import CardTravel from '@material-ui/icons/CardTravel';
-import Speaker from '@material-ui/icons/Speaker';
 import classNames from 'classnames';
-import color from '../../assets/styles/material/com/color'
-import { PositionCard, Typography, TaskCard, CandidateCard, HistoryCard } from '../unit/index'
+import { Typography, ThreeRadioButton, RequiredButton } from '../unit/index'
 
 const state = {
-  step: 0,
+  pstTitle: '',
+  department: '',
+  id: '',
+  country: '',
+  phoneNum: 'optional',
+  resumeUpload: 'optional',
+  experienceSm: 'optional',
+  workHistory: 'optional',
+  education: 'optional',
+  coverLetter: 'optional',
+  expiArr: [{title: 'Resume Upload', value: 'resumeUpload'},
+            {title: 'Experience Summary', value: 'experienceSm'},
+            {title: 'Work History', value: 'workHistory'},
+            {title: 'Education', value: 'education'}],
+  emailKey: 'asdfasdfsadfasdfasdfsadfdsf'
 }
 
-class VI_POL_ModalComponent extends React.Component {
+class VI_POL_102Component extends React.Component {
   constructor(props){
     super(props);
     this.state=state;
+  this.handleChanged=this.handleChanged.bind(this);
+  }
+  
+  handleChanged(e){
+    const {name, value} = e.target;
+    this.setState({
+      [name]: value
+    })
   }
 
+
   render() {
-    const { classes ,handleModal, open} = this.props;
-    const MenuArr =  [
-      {name: 'Ditails' ,
-       Icon:<CardTravel 
-       className={classNames( classes.menuIcon,
-        this.state.step === 0 ? classes.onColor : classes.offColor)}/>},
-      {name: 'Calender' ,
-       Icon:<FormatListBulleted 
-       className={classNames( classes.menuIcon,
-        this.state.step === 1 ? classes.onColor : classes.offColor)}/>},
-      {name: 'My Tasks' ,
-       Icon:<FormatListBulleted 
-       className={classNames( classes.menuIcon,
-        this.state.step === 2 ? classes.onColor : classes.offColor)}/>},
-      {name: 'Inbox' ,
-       Icon:<ThumbUp 
-       className={classNames( classes.menuIcon,
-        this.state.step === 3 ? classes.onColor : classes.offColor)}/>},
-      {name: 'Reports' ,
-       Icon:<Speaker 
-       className={classNames( classes.menuIcon,
-        this.state.step === 4 ? classes.onColor : classes.offColor)}/>},
-      {name: 'Reports' ,
-       Icon:<People 
-       className={classNames( classes.menuIcon,
-        this.state.step === 5 ? classes.onColor : classes.offColor)}/>},
-    ];
-    const Menu__Component = ()=>
-      <List className={classes.menu}>
-      {MenuArr.map((r, index) => (
-        <ListItem 
-           key={index}
-          button >
-          <div style={{position: 'relative'}}>
-            {r.Icon}
-            {index === 5 ? null : <hr className={classes.hr}/>}
-          </div>
-            <Typography
-              variant={'caption'}
-              fontWeight={2}
-              className={classes.menuText}
-              color={this.state.step === index ? color.green.onGreen : color.gray.weakGray}>
-              {r.name}
-            </Typography>
-          </ListItem>
-        ))}
-      </List>;
+    const { classes } = this.props;
+    const radiobtn__Component = (title,value,idx)=>
+      <div className={classes.item102} key={idx}>
+        <Typography
+          style={{marginTop: 'auto',marginBottom: 'auto'}}
+          fontSize={12}
+          fontWeight={3}>
+          {title}
+        </Typography>
+        <ThreeRadioButton
+          style={{height: '22px'}}
+          handleChanged={e=>this.handleChanged(e)}
+          name={value}
+          value={this.state[value]}/>
+      </div>;
+    const btn__Component = (title)=>
+    <div className={classes.item102}>
+      <Typography
+        style={{marginTop: 'auto',marginBottom: 'auto'}}
+        fontSize={12}
+        fontWeight={3}>
+        {title}
+      </Typography>
+      <RequiredButton
+        style={{height: '23.99px'}}>
+        Required
+      </RequiredButton>
+    </div>;
+    const viaEmailText1 = 'If shared, candidates may apply via email using the follwing email address.'
+    const viaEmailText2 = 'The message body will be added as the summary, attached resumes will be embedded and the name/email address will be userd to create the canadidate.'
     return (
-        <Dialog
-          className={classes.modalRoot}
-          onClose={handleModal}
-          aria-labelledby="customized-dialog-title"
-          open={open}>
-            <DialogTitle disableTypography className={classes.title}>
-              <Typography color={"#fff"} fontWeight={2} variant="h6">New Position</Typography>
-            </DialogTitle>
-            <div className={classes.contentWrap}>
-              {Menu__Component()}
-              <div className={classes.content}>
-                <DialogActions className={classes.footer}>
-                  <Button className={classes.stepBtn}>
-                    Save changes
-                  </Button>
-                </DialogActions>
-              </div>
-            </div>
-        </Dialog>
+      <div className={classes.VI_POL_102}>
+        <Typography
+          variant={'h5'}
+          fontWeight={2}
+          className={classes.titleText}>
+          Candidate Application
+        </Typography>
+        <Typography
+          variant={'subtitle1'}
+          fontWeight={3}
+          className={classes.subTitle}>
+          Application Form
+        </Typography>
+        <Typography
+          variant={'caption'}
+          fontWeight={1}>
+          Choose the information collected for candidates applying through your Career or Employee Portals
+        </Typography>
+        <Typography
+          variant={'subtitle1'}
+          fontWeight={3}
+          className={classNames(classes.marginTop25,classes.marginBtm10)}>
+          Personal Information
+        </Typography>
+        {btn__Component('Name')}
+        {btn__Component('Email Address')}
+        {radiobtn__Component('Phone Number', 'phoneNum')}
+        <Typography
+          variant={'subtitle1'}
+          fontWeight={3}
+          className={classNames(classes.marginTop25,classes.marginBtm10)}>
+          Experience
+        </Typography>
+        {this.state.expiArr.map((r,i)=>
+          radiobtn__Component(r.title,r.value,i)
+        )}
+        <Typography
+          variant={'subtitle1'}
+          fontWeight={3}
+          className={classNames(classes.marginTop25,classes.marginBtm10)}>
+          General
+        </Typography>
+        {radiobtn__Component('Cover Letter', 'coverLetter')}
+        <Typography
+          variant={'subtitle1'}
+          fontWeight={3}
+          className={classNames(classes.marginTop25,classes.marginBtm10)}>
+          Apply via Email
+        </Typography>
+        <Typography
+          style={{lineHeight: '1.2rem'}}
+          variant={'caption'}
+          fontWeight={1}>
+          {viaEmailText1}
+        </Typography>
+        <Typography
+          style={{lineHeight: '1.2rem'}}
+          variant={'caption'}
+          fontWeight={1}>
+          {viaEmailText2}
+        </Typography>
+        <input
+          className={classNames(classes.marginBtm30,classes.marginTop20,classes.emailInput)}
+          value={this.state.emailKey}
+          readOnly
+          type='text'/>
+      </div>
     )
   }
 }
 
-export default VI_POL_ModalComponent
+export default VI_POL_102Component

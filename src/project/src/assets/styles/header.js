@@ -1,6 +1,6 @@
 import color from '../styles/material/com/color'
 
-const drawerWidth = 240;
+const drawerWidth = 230;
 const toolbarHeight = 72;
 const styles = theme => ({
   root: {
@@ -85,7 +85,10 @@ const styles = theme => ({
   },
   headerInput: {
     marginLeft: 'auto',
-    padding: '9px 14px',
+    marginRight: '8px',
+    '& input':{
+      padding: '9px 14px',
+    }
   },
   avatMenu:{
     '& div:nth-child(2)':{

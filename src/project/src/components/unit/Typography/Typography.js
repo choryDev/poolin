@@ -10,7 +10,6 @@ const Typography = ({ ...state }) => {
     children,
     className,
     variant,
-    style,
     color,
     btnTextWeight,
     fontWeight,
@@ -20,7 +19,7 @@ const Typography = ({ ...state }) => {
   const useStyles = makeStyles({
     defaultText:{
       textTransform: 'none',
-      fontFamily: 'montserrat',
+      fontFamily: 'Source Sans Pro, sans-serif',
       fontWeight: btnTextWeight ? font.fontWeight[1] :
                      fontWeight ? font.fontWeight[fontWeight] :font.fontWeight[0],
       color: color ? color : font.defaultFontColor,
@@ -30,7 +29,6 @@ const Typography = ({ ...state }) => {
   return (
       <Typography1
         {...other}
-        style={style}
         variant={variant}
         className={classNames(className,classes.defaultText)}>
         {children}

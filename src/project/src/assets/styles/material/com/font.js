@@ -1,7 +1,7 @@
 const font = {
-  fontThin:'Nunito,sans-serif',
+  fontThin:'Noto Sans HK,sans-serif',
   fontWeight: ['200', '300', '400', '500', '600'],
-  fontFamily1: 'montserrat',
+  fontFamily1: 'Source Sans Pro, sans-serif',
   defaultFontColor:'#4c565c'
 }
 export default font;

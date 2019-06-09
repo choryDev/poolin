@@ -3,7 +3,7 @@ import {withStyles} from '@material-ui/core/styles';
 import classNames from 'classnames';
 import styleI from "./autocompleteCSS";
 
-const css = styleI(195);
+const css = styleI(300);
 
 class AutoComponent extends React.Component {
   constructor(props) {
@@ -124,6 +124,6 @@ class AutoComponent extends React.Component {
 };
 
 
-const Autocomplete = withStyles(css, { withTheme: true })(AutoComponent)
+const Autocomplete2 = withStyles(css, { withTheme: true })(AutoComponent)
 
-export default Autocomplete;
+export default Autocomplete2;
