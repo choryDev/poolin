@@ -16,8 +16,8 @@ const ToolBarAvatar = ({ ...state }) => {
 
   const useStyles = makeStyles({
     defaultCss:{
-      width: '20px',
-      height: '20px',
+      width: '30px',
+      height: '30px',
       borderRadius: '25%',
       backgroundColor: color ? color :'#3C55B3',
     }

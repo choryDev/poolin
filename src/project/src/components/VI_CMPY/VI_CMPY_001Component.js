@@ -122,12 +122,6 @@ class VI_CMPY_001Component extends Workspace {
 
   render() {
         const { classes } = this.props;
-        const wrap = {
-           paddingRight: '15px',
-           '&:hover':{
-             paddingRight: '0',
-            }
-          }
         const HeaderTitel=(weight,va,color,content,mr,mb) =>
          <Typography
           style={{
@@ -139,7 +133,7 @@ class VI_CMPY_001Component extends Workspace {
           {content}
         </Typography>
     return (
-        <div className={classNames(classes.root,classes.full)}>
+        <div className={classNames(classes.root)}>
           <div className={classes.header}>
               {HeaderTitel(2,'h5',color.gray.default,'Recent Status',48,0)}
               {HeaderTitel(2,'h5',color.gray.default,'5',8,0)}

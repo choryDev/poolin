@@ -39,6 +39,9 @@ public class WorkspaceMember {
     @Convert(converter = UserStatusTypeConverter.class)
     private UserStatusTypes status;
 
+    @Column(name = "NAME", length = 50)
+    private String name;
+
     @Column(name = "ROLE")
     private String role;
 

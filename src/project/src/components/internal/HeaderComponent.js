@@ -26,6 +26,10 @@ class HeaderComponent extends React.Component {
       this.textInput = React.createRef();
   }
 
+  componentDidMount() {
+  }
+  
+
   componentDidUpdate() {
     this.textInput.current.focus();
   }
@@ -53,7 +57,7 @@ class HeaderComponent extends React.Component {
 
   render() {
     const { classes, handleOpen, workspace } = this.props;
-    const AA =(title)=>
+    const Menu_Item = (title) =>
       <MenuItem
         className={classes.MenuItem}
         onClick={this.handleMenuClose}>
@@ -63,6 +67,50 @@ class HeaderComponent extends React.Component {
          {title}
         </Typography>
       </MenuItem>;
+    const DefaultHeader__Component = () =>
+      <>
+        <Typography
+          className={classes.headerTitle}
+          fontWeight={2} variant="h5" color="black">
+          {this.props.headerMainTitle}
+        </Typography>
+        <Input 
+          value={this.state.search}
+          name='search'
+          placeholder="Search"
+          className={classes.headerInput}
+          onChange={e => this.handleChanged(e)}
+          inputRef={this.textInput} 
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Search color={'primary'}/>
+              </InputAdornment>
+            ),
+          }}/>
+      </>;
+    const ProjectHeader__Component = () =>
+    <>
+      <Typography
+        className={classes.headerTitle}
+        fontWeight={2} variant="h5" color="black">
+        {this.props.headerMainTitle}
+      </Typography>
+      <Input 
+        value={this.state.search}
+        name='search'
+        placeholder="Search"
+        className={classes.headerInput}
+        onChange={e => this.handleChanged(e)}
+        inputRef={this.textInput} 
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Search color={'primary'}/>
+            </InputAdornment>
+          ),
+        }}/>
+    </>;
     const APP = () =>
       <AppBar
         position="fixed"
@@ -72,7 +120,6 @@ class HeaderComponent extends React.Component {
         <Toolbar 
           className={classes.appBarHeight}
           disableGutters={!this.props.open}>
-          <div>
             <IconButton
               color="inherit"
               aria-label="Open drawer"
@@ -83,28 +130,8 @@ class HeaderComponent extends React.Component {
               <MenuIcon 
                 style={{color: color.gray.weakGray}}/>
             </IconButton>
-            <Typography
-              className={classes.headerTitle}
-              fontWeight={2} variant="h5" color="black">
-              My DashBoard
-            </Typography>
-          </div>
-          <div style={{display: 'flex'}}>
-          <Input 
-            value={this.state.search}
-            name='search'
-            placeholder="Search"
-            className={classes.headerInput}
-            onChange={e => this.handleChanged(e)}
-            inputRef={this.textInput} 
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search color={'primary'}/>
-                </InputAdornment>
-              ),
-            }}/>
-            <div>
+          {DefaultHeader__Component()}
+            <div style={{marginTop: '8px'}}>
               <Avatar
                 className={classNames(classes.headerAvartar,{
                   [classes.headerAvartarClose]: !this.props.open,
@@ -123,15 +150,14 @@ class HeaderComponent extends React.Component {
                 anchorEl={this.state.anchorEl}
                 open={Boolean(this.state.anchorEl)}
                  onClose={this.handleMenuClose}>
-                  {AA('Profile')}
+                  {Menu_Item('Profile')}
                   <Divider style={{backgroundColor: '#EAEAEA', height: '2px'}}/>
-                  {AA('Create new workspace')}
-                  {AA('Workspace Settings')}
+                  {Menu_Item('Create new workspace')}
+                  {Menu_Item('Workspace Settings')}
                   <Divider style={{backgroundColor: '#EAEAEA', height: '2px'}}/>
-                  {AA('User settings')}
-                  {AA('Sign out')}
+                  {Menu_Item('User settings')}
+                  {Menu_Item('Sign out')}
               </Menu>
-            </div>
             </div>
         </Toolbar>
       </AppBar>;

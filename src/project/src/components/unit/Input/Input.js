@@ -5,33 +5,50 @@ import {font} from '../../../assets/styles/material/com/index'
 import { makeStyles } from '@material-ui/styles';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
-import red from '@material-ui/core/colors/red';
-
 
 const Input = ({ ...state }) => {
 
   const {
     children,
     className,
-    alert,
+    color,
+    type,
     readOnly,
     ...other
   } = state;
 
   const theme = createMuiTheme({
     palette: {
-      primary: alert ? red : grey,
+      primary: color ? color : grey,
     },
     typography: { useNextVariants: true },
   });
 
   const useStyles = makeStyles({
     defaultInput:{
-      fontFamily: 'montserrat',
-      fontWeight: font.fontWeight,
-      height: '50px',
+      '& input':{
+        fontFamily: font.fontFamily1,
+        fontWeight: font.fontWeight[2],
+        color: font.defaultFontColor,
+        '&::placeholder': {
+          fontWeight: font.fontWeight[2],
+          color: 'black'
+        }
+      },
       '&>div':{
         fontSize: '14px',
+      }
+    },
+    sm:{
+      margin: 0,
+      '& input':{
+        padding: '9px 10px',
+      }
+    },
+    md:{
+      margin: 0,
+      '& input':{
+        padding: '9px 10px',
       }
     }
   })
@@ -40,7 +57,8 @@ const Input = ({ ...state }) => {
     <MuiThemeProvider theme={theme}>
       <TextField
         {...other}
-        className={classNames(className,classes.defaultInput)}
+        className={classNames(className,classes.defaultInput,
+          type ? classes[type] : null)}
         margin="normal"
         variant="outlined"/>
   </MuiThemeProvider>
