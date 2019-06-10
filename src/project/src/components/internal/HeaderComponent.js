@@ -28,11 +28,6 @@ class HeaderComponent extends React.Component {
 
   componentDidMount() {
   }
-  
-
-  componentDidUpdate() {
-    this.textInput.current.focus();
-  }
 
   componentWillReceiveProps(nextProps, nextContext) {
     if(this.props.open !== nextProps.workspace && !nextProps.workspace){
@@ -111,8 +106,10 @@ class HeaderComponent extends React.Component {
           ),
         }}/>
     </>;
-    const APP = () =>
-      <AppBar
+    return (
+      <div>
+         {workspace ? 
+             <AppBar
         position="fixed"
         className={classNames(classes.appBar, {
           [classes.appBarShift]: this.props.open,
@@ -160,11 +157,9 @@ class HeaderComponent extends React.Component {
               </Menu>
             </div>
         </Toolbar>
-      </AppBar>;
-
-    return (
-      <div>
-        {workspace ? <APP /> : <div></div>}
+      </AppBar>
+       : <div></div>}
+       {/* workspace를 받을때 보여지는 화면은 따로 상수로 빼면 안됩니다. */}
       </div>
     )
   }

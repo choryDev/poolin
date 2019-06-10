@@ -13,6 +13,7 @@ const state = {
   emailArr:new List(['hahaha@naver.com','hoho123@naver.com']),
   inputValue: '',
   inputLeng:0,
+  emailCheck: ''
 }
 
 class VI_POL_105Component extends React.Component {
@@ -21,6 +22,7 @@ class VI_POL_105Component extends React.Component {
     this.state=state;
     this.handleChanged=this.handleChanged.bind(this);
     this.handleDelete=this.handleDelete.bind(this);
+    this.handlePush=this.handlePush.bind(this);
   }
 
   handleDelete(i){
@@ -29,20 +31,31 @@ class VI_POL_105Component extends React.Component {
     })
   }
   
+  handlePush(){
+    var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    var obj = {};
+    if (regExp.test(this.state.inputValue)){
+      obj = {
+        emailArr: this.state.emailArr.push(this.state.inputValue),
+        inputValue: '',
+        emailCheck:''
+      }
+    } else{
+      obj = {
+        emailCheck: 'email not valid'
+      }
+    }
+    this.setState(obj)
+  }
+
   handleChanged(e){
     const {name, value} = e.target;
     var obj = {};
-    if(value.substring(value.length-4)==='.com'){
-      obj = {
-        emailArr: this.state.emailArr.push(value),
-        inputValue: ''
-      }
-    }else{
        obj={
         [name]: value,
         inputLeng: value.length,
+        emailCheck:''
       }
-    }
     this.setState(obj)
   }
 
@@ -81,6 +94,7 @@ class VI_POL_105Component extends React.Component {
                   style={{width: `${170 + this.state.inputLeng>10 ? 170+(this.state.inputLeng-10)*4 : 0 }px`}}
                   name={'inputValue'}
                   onChange={e=>this.handleChanged(e)}
+                  onKeyDown={e=>{if(e.keyCode == 13)this.handlePush()}}
                   value={this.state.inputValue}
                   placeholder={'name@company.com, ...'}
                   className={classes.icbInput}/>
@@ -90,6 +104,13 @@ class VI_POL_105Component extends React.Component {
                 variant={'caption'}
                 fontWeight={2}>
                 {subText1}
+              </Typography>
+              <Typography
+                style={{lineHeight: '1.2rem',marginTop: '8px'}}
+                variant={'caption'}
+                color={'red'}
+                fontWeight={2}>
+                {this.state.emailCheck}
               </Typography>
               <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '16px'}}>
                 <Button
