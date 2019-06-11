@@ -38,7 +38,6 @@ public class IndexPagerHandler {
     ServerComponent serverComponent;
 
     public Mono<ServerResponse> nonAuth(ServerRequest req, final Resource html){
-        System.out.println("laksdjflkasjdfijeoijoi");
         return ServerResponse.ok().contentType(MediaType.TEXT_HTML)
             .syncBody(html).map(m -> m);
     }

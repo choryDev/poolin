@@ -46,7 +46,7 @@ const styles = theme => ({
     display: 'none',
   },
   drawer: {
-    width: drawerWidth,
+    width: 0,
     flexShrink: 0,
     whiteSpace: 'nowrap',
   },
@@ -65,9 +65,9 @@ const styles = theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
-    width: theme.spacing.unit * 7 + 1,
+    width: 0,
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 8 + 1,
+      width: 0
     },
   },
   toolbarWrap: {
@@ -167,7 +167,7 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: 90 - 24,
+    marginLeft: 0,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {

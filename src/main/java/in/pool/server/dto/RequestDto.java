@@ -16,8 +16,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class RequestDto {
@@ -66,7 +65,7 @@ public class RequestDto {
 
     @JsonIgnore
     private Project sessProject;
-//
+
     @JsonIgnore
     private AuthTypes projectAuth;
 
@@ -103,5 +102,25 @@ public class RequestDto {
 
     public void setSess_layer(String sess_layer) {
         this.sess_layer = SessionLayerTypes.getLayerType(sess_layer);
+    }
+
+    @Override
+    public String toString() {
+        return "RequestDto{" +
+                "access_tp=" + access_tp +
+                ", lang=" + lang +
+                ", sess_layer=" + sess_layer +
+                ", sess_user_no=" + sess_user_no +
+                ", sessUser=" + sessUser +
+                ", sess_auth_key='" + sess_auth_key + '\'' +
+                ", sess_salt='" + sess_salt + '\'' +
+                ", sessNow=" + sessNow +
+                ", sess_workspace_id='" + sess_workspace_id + '\'' +
+                ", sess_workspace_no=" + sess_workspace_no +
+                ", workspaceAuth=" + workspaceAuth +
+                ", sess_project_no=" + sess_project_no +
+                ", sess_project_id='" + sess_project_id + '\'' +
+                ", projectAuth=" + projectAuth +
+                '}';
     }
 }

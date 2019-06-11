@@ -49,18 +49,12 @@ const CompanyCard = ({ ...state }) => {
   const classes = useStyles();
 
   return (
-  <Card className={classes.cardCss} {...other}>
+    <Card className={classes.cardCss} {...other}>
         <Typography fontWeight={3}>
          {title}
         </Typography>
         <div className={classes.iconWrap}>
-          <i className={classNames(classes.iconCss,
-            icon ? icon : "fa fa-camera-retro")}/>
-          <Typography fontWeight={3} className={classes.iconText}>
-           {title}
-          </Typography>
         </div>
-        
     </Card>
   );
 };

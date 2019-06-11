@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -14,11 +15,11 @@ import java.util.List;
 @AllArgsConstructor
 public class ResponseListDto extends ResponseDto{
 
-    private List list;
+    private List list = new ArrayList();
 
     private String next_token;
 
-    private YesNoTypes completed;
+    private YesNoTypes completed = YesNoTypes.YES;
 
     public String getCompleted() {
         return completed.getYesNo();

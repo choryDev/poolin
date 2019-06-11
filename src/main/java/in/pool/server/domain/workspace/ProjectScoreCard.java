@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 public class ProjectScoreCard {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", length = 11, columnDefinition = "UNSIGNED INT(11)")
-    private Integer id;
+    @Column(name = "SCRD_NO", length = 11, columnDefinition = "UNSIGNED INT(11)")
+    private Integer scorecardNo;
 
     @Column(name = "UP_ID", length = 11, columnDefinition = "UNSIGNED INT(11)")
     private Integer upId;
@@ -22,7 +22,7 @@ public class ProjectScoreCard {
     private Integer projectNo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PRJT_NO")
+    @JoinColumn(name = "PRJT_NO", nullable = false)
     private Project project;
 
     @Column(name = "content")

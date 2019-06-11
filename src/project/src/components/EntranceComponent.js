@@ -15,26 +15,44 @@ const initState ={
   newCardNm: '',
   newCardWb: '',
   loading: false,
+  workspaces: []
 }
 
 class EntranceComponent extends React.Component {
+
   constructor(props) {
     super(props);
-    this.state=initState;
+    this.state = initState;
     this.handleModal = this.handleModal.bind(this);
-    this.AddCmpy=this.AddCmpy.bind(this);
+    this.fetchWorkspaces = this.fetchWorkspaces.bind(this);
+    this.AddCmpy = this.AddCmpy.bind(this);
+
+    this.fetchWorkspaces();
   }
+
+  fetchWorkspaces(){
+    sendData(`/api/me/workspaces`, 'get', {}, {},
+        {timeout: 30 * 1000},
+        res => {
+          this.setState({
+            workspaces: res.data.list
+          });
+        });
+  }
+
   handleChanged(e){
     const {value, name} = e.target;
     this.setState({
       [name] : value
     })
   }
+
   handleModal(){
     this.setState({
       open: !this.state.open,
     })
   }
+
   componentDidMount() {
     this.props.notInWorkspace();
   }
@@ -70,13 +88,12 @@ class EntranceComponent extends React.Component {
         Select your workspace
       </Typography>
         <div className={classes.cardWrap}>
-          {tileData.map((row, i) =>
-             <CompanyCard component={Link} to={"/overview"}
-              headColor={row.color}
-              key={i}
-              title={row.title}
-              author={row.author}
-              icon={row.icon} />)}
+          {this.state.workspaces.map((row, i) =>
+             <CompanyCard component={Link} to={`/${row.workspace_id}/overview`}
+                          headColor={row.color}
+                          onClick={() => console.log('alskdjflaksjdfas')}
+                          key={i}
+                          title={row.workspace_name}/>)}
         </div>
         <div style={{width:'100%', display: 'flex'}}>
         <Typography

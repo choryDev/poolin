@@ -1,6 +1,5 @@
 package in.pool.server.dto.workspace;
 
-import in.pool.server.dto.RequestDto;
 import in.pool.server.dto.sign.SignReqDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

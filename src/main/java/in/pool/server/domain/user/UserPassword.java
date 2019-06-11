@@ -16,7 +16,7 @@ public class UserPassword {
     private Integer userNo;
 
     @MapsId
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "USER_NO")
     private User user;
 

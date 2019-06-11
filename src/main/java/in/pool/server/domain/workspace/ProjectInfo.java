@@ -39,15 +39,19 @@ public class ProjectInfo {
     @Convert(converter = RemoteTypesConverter.class)
     private RemoteTypes remote;
 
+    // COM_PRJT_MST::401
     @Column(name = "position", length = 11)
     private String position;
 
+    // COM_PRJT_MST::402
     @Column(name = "category", length = 11)
     private String category;
 
+    // COM_PRJT_MST::403
     @Column(name = "edu", length = 11)
     private String education;
 
+    // COM_PRJT_MST::404
     @Column(name = "exp", length = 11)
     private String experience;
 

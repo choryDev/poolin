@@ -34,7 +34,7 @@ public class User {
     private LocalDateTime updatedDate = LocalDateTime.now();
 
     // Mapping
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, optional = false)
+    @OneToOne(mappedBy = "user", optional = false)
     public UserPassword password;
 
 }

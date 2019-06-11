@@ -1,1 +1,1 @@
-export const MRMENTION_TOKEN = 'mrmention_token'
+export const ELW_TOKEN = 'elw_token'

@@ -5,6 +5,28 @@
 
 <mapper namespace="ws.workspace">
 
+    <select id="chkEmployeeByEmail" parameterType="hmap" resultType="int">
+        select a.user_no
+          from (select *
+                 from srv_usr_mst
+                where email = #{email}
+                  and status = '100-002') a
+               join (select *
+                          from srv_wrks_mem
+                         where wrks_no = #{sess_workspace_no}
+                           and status = '100-002') b on a.user_no = b.user_no
+    </select>
+    <select id="getMembers" parameterType="hmap" resultType="hmap">
+        select b.username,
+               b.email,
+               if(a.name is null or a.name = '', c.name, a.name) as name
+          from (select *
+                 from srv_wrks_mem
+                where wrks_no = #{sess_workspace_no}
+                  and status = '100-002') a
+               join srv_usr_mst b on a.user_no = b.user_no
+               join srv_usr_info c on a.user_no = c.user_no
+    </select>
     <select id="myStatusInWorkspace" parameterType="hmap" resultType="in.pool.server.dto.workspace.mapping.MyStatusWorkspace">
         select B.WRKS_NO as workspaceNo,
                B.USER_NO as userNo,
