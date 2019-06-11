@@ -16,10 +16,9 @@ import Brightness1 from '@material-ui/icons/Brightness1';
 import CheckCircleOutlined from '@material-ui/icons/CheckCircleOutlined';
 import Notifications from '@material-ui/icons/Notifications';
 import MoreHoriz from '@material-ui/icons/MoreHoriz';
-
+import Modal from '../../containers/VI_POL/VI_POL_ModalContainer'
+import { ToolBarAvatar, Typography, Atag } from '../unit/index'
 import color from '../../assets/styles/material/com/color'
-
-import { ToolBarAvatar, Typography } from '../unit/index'
 
 const MenuArr =  [
     {name: 'Home' , Icon:<Home /> },
@@ -34,10 +33,21 @@ const PrjArr =  [
     {name: 'Po' , num: 12 },
   ];
 
+const state = {
+  modal: false,
+}
+
 class LeftComponent extends React.Component {
   constructor(props) {
     super(props);
-    
+    this.state=state;
+    this.handleModal = this.handleModal.bind(this);
+  }
+
+  handleModal(){
+    this.setState({
+      modal: !this.state.modal
+    })
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
@@ -48,25 +58,47 @@ class LeftComponent extends React.Component {
 
   render() {
     const { classes, theme, handleOpen, workspace } = this.props;
+
+    const MenuArr =  [
+      {name: 'Home' ,
+       Icon:<Home className={classes.menuIcon}/>,
+       url: '/Tasks' },
+      {name: 'Calender' ,
+       Icon:<CheckCircleOutlined className={classes.menuIcon}/>,url: '/Tasks' },
+      {name: 'My Tasks' , Icon:<CheckCircleOutlined className={classes.menuIcon}/>,
+      url: '/Tasks' },
+      {name: 'Inbox' ,
+       Icon:<Notifications className={classes.menuIcon}/>,
+       url: '/Tasks' },
+      {name: 'Reports' ,
+       Icon:<Notifications className={classes.menuIcon}/>,
+       url: '/Tasks' },
+    ];
+
     const MenuList__Component = (arr) =>
       <List className={classes.ListWrap}>
         {arr.map((r, index) => (
-          <ListItem 
-            className={classNames(classes.toolbarItem,
-            this.props.open ? classes.toolbarItemOP : null)}
-            button key={index}>
-            <ListItemIcon
-             className={this.props.open ? classes.iconOpen : classes.iconClose }>
-             {r.Icon}</ListItemIcon>
-              <Typography
-                fontWeight={1}
-                color={this.props.open ? '#fff' : color.gray.default}>
-                {r.name}
-              </Typography>
-          </ListItem>
+          <Atag 
+            onClick={()=>this.props.changeHeaderTitle(r.name)}
+            key={index}
+            href={r.url}>
+              <ListItem 
+                className={classNames(
+                this.props.open ? classes.toolbarItemOP : null)}
+                button >
+                <ListItemIcon
+                 className={this.props.open ? classes.iconOpen : classes.iconClose }>
+                 {r.Icon}</ListItemIcon>
+                  <Typography
+                    variant={'caption'}
+                    fontWeight={2}
+                    color={this.props.open ? '#fff' : color.gray.default}>
+                    {r.name}
+                  </Typography>
+              </ListItem>
+          </Atag >
         ))}
     </List>;
-
     const PrjList__Component = (arr) =>
       <List className={classes.ListWrap}>
         {arr.map((r, index) => (
@@ -84,7 +116,7 @@ class LeftComponent extends React.Component {
                className={classes.BrightBtn}>
               </Brightness1>
                 <Typography
-                  fontWeight={1}
+                  fontWeight={2}
                   color={this.props.open ?
                                r.num === 0 ? color.gray.offGray : '#fff'
                                : color.gray.offGray}>
@@ -124,7 +156,9 @@ class LeftComponent extends React.Component {
                 P
               </Typography>
             </ToolBarAvatar>
-            <Typography style={{marginLeft: '16px'}} fontWeight={2} color={'#fff'}>
+            <Typography
+              variant={'h6'}
+              style={{marginLeft: '16px'}} fontWeight={3} color={'#fff'}>
               Pssss
             </Typography>
           </div>
@@ -137,13 +171,14 @@ class LeftComponent extends React.Component {
         <Divider style={{backgroundColor: color.gray.hoverGray}}/>
           {MenuList__Component(MenuArr)}
         <Divider style={{backgroundColor: color.gray.hoverGray}}/>
-          <div className={classes.toolbar}>
+          <div style={{minHeight:'42px'}} className={classes.toolbar}>
               <Typography
                fontWeight={2} 
                color={ this.props.open ? '#fff' : color.gray.offGray }>
                 Project
               </Typography>
             <IconButton 
+              onClick={()=>this.handleModal()}
               className={classNames(classes.iconBtn,
               this.props.open ? classes.toolbarItemOP : null)}>
                <Add />
@@ -166,6 +201,9 @@ class LeftComponent extends React.Component {
               Invite to Inpool
             </Button>
           </div>
+          <Modal
+            open = {this.state.modal}
+            handleModal = {()=>this.handleModal()}/>
       </Drawer>;
     return (
       <div>

@@ -1,13 +1,20 @@
 import color from '../styles/material/com/color'
 
+<<<<<<< HEAD
 const drawerWidth = 240;
+=======
+const drawerWidth = 230;
+>>>>>>> 80b735adb75f6f0d9d6af38722c4cfe10a6e62f7
 const toolbarHeight = 72;
 const styles = theme => ({
   root: {
     display: 'flex',
   },
   appBarHeight: {
+<<<<<<< HEAD
     justifyContent: 'space-between',
+=======
+>>>>>>> 80b735adb75f6f0d9d6af38722c4cfe10a6e62f7
     height: toolbarHeight
   },
   appBar: {
@@ -81,16 +88,32 @@ const styles = theme => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0 8px 0 16px',
+<<<<<<< HEAD
     minHeight: '36px',
     //...theme.mixins.toolbar,
   },
   headerInput: {
     padding: '9px 14px',
+=======
+    minHeight: '72px',
+    //...theme.mixins.toolbar,
+  },
+  headerInput: {
+    marginLeft: 'auto',
+    marginRight: '8px',
+    '& input':{
+      padding: '9px 14px',
+    }
+>>>>>>> 80b735adb75f6f0d9d6af38722c4cfe10a6e62f7
   },
   avatMenu:{
     '& div:nth-child(2)':{
       top: '56px !important',
+<<<<<<< HEAD
       left: `calc(100% - ${216}px) !important`,
+=======
+      left: `calc(100% - ${200}px) !important`,
+>>>>>>> 80b735adb75f6f0d9d6af38722c4cfe10a6e62f7
       right: '24px'
     }
   },
@@ -115,6 +138,13 @@ const styles = theme => ({
      '&:hover':
       { backgroundColor: color.gray.hoverGray },
   },
+<<<<<<< HEAD
+=======
+  menuIcon:{
+    width: '1.25rem',
+    height: '1.25rem',
+  },
+>>>>>>> 80b735adb75f6f0d9d6af38722c4cfe10a6e62f7
   toolbarItem:{
     color: 'white',
     paddingTop: '6px',

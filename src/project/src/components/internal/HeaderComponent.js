@@ -12,7 +12,6 @@ import classNames from 'classnames';
 import Avatar from '@material-ui/core/Avatar';
 import { Typography, Input } from '../unit/index';
 import color from '../../assets/styles/material/com/color'
-
 class HeaderComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -26,8 +25,9 @@ class HeaderComponent extends React.Component {
       this.textInput = React.createRef();
   }
 
-  componentDidUpdate() {
-    this.textInput.current.focus();
+
+  componentDidMount() {
+
   }
 
   componentWillReceiveProps(nextProps, nextContext) {
@@ -53,7 +53,7 @@ class HeaderComponent extends React.Component {
 
   render() {
     const { classes, handleOpen, workspace } = this.props;
-    const AA =(title)=>
+    const Menu_Item = (title) =>
       <MenuItem
         className={classes.MenuItem}
         onClick={this.handleMenuClose}>
@@ -63,82 +63,83 @@ class HeaderComponent extends React.Component {
          {title}
         </Typography>
       </MenuItem>;
-    const APP = () =>
-      <AppBar
-        position="fixed"
-        className={classNames(classes.appBar, {
-          [classes.appBarShift]: this.props.open,
-        })}>
-        <Toolbar 
-          className={classes.appBarHeight}
-          disableGutters={!this.props.open}>
-          <div>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={handleOpen}
-              className={classNames(classes.menuButton,classes.headerTitle, {
-                [classes.hide]: this.props.open,
-              })}>
-              <MenuIcon 
-                style={{color: color.gray.weakGray}}/>
-            </IconButton>
-            <Typography
-              className={classes.headerTitle}
-              fontWeight={2} variant="h5" color="black">
-              My DashBoard
-            </Typography>
-          </div>
-          <div style={{display: 'flex'}}>
-          <Input 
-            value={this.state.search}
-            name='search'
-            placeholder="Search"
-            className={classes.headerInput}
-            onChange={e => this.handleChanged(e)}
-            inputRef={this.textInput} 
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search color={'primary'}/>
-                </InputAdornment>
-              ),
-            }}/>
-            <div>
-              <Avatar
-                className={classNames(classes.headerAvartar,{
-                  [classes.headerAvartarClose]: !this.props.open,
-                })}
-                onClick={this.handleMenuOpen}
-                aria-owns={this.state.anchorEl ? 'simple-menu' : undefined}
-                aria-haspopup="true"
-                style={{backgroundColor: 'red'}}>
-                  <Typography fontWeight={2} variant="body2" color="white">
-                    My
-                  </Typography>
-              </Avatar>
-              <Menu
-                className={classes.avatMenu}
-                id="simple-menu"
-                anchorEl={this.state.anchorEl}
-                open={Boolean(this.state.anchorEl)}
-                 onClose={this.handleMenuClose}>
-                  {AA('Profile')}
-                  <Divider style={{backgroundColor: '#EAEAEA', height: '2px'}}/>
-                  {AA('Create new workspace')}
-                  {AA('Workspace Settings')}
-                  <Divider style={{backgroundColor: '#EAEAEA', height: '2px'}}/>
-                  {AA('User settings')}
-                  {AA('Sign out')}
-              </Menu>
-            </div>
-            </div>
-        </Toolbar>
-      </AppBar>;
+
+    const DefaultHeader__Component = () =>
+      <>
+        <Typography
+          className={classes.headerTitle} >
+          {this.props.headerMainTitle}
+        </Typography>
+        <Input 
+          value={this.state.search}
+          name='search'
+          placeholder="Search"
+          className={classes.headerInput}
+          onChange={e => this.handleChanged(e)}
+          inputRef={this.textInput} 
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Search color={'primary'}/>
+              </InputAdornment>
+            ),
+          }}/>
+      </>;
 
     return (
       <div>
-        {workspace ? <APP /> : <div></div>}
+         {workspace ? 
+             <AppBar
+                position="fixed"
+                className={classNames(classes.appBar, {
+                  [classes.appBarShift]: this.props.open,
+                })}>
+                <Toolbar
+                  className={classes.appBarHeight}
+                  disableGutters={!this.props.open}>
+                    <IconButton
+                      color="inherit"
+                      aria-label="Open drawer"
+                      onClick={handleOpen}
+                      className={classNames(classes.menuButton,classes.headerTitle, {
+                        [classes.hide]: this.props.open,
+                      })}>
+                      <MenuIcon
+                        style={{color: color.gray.weakGray}}/>
+                    </IconButton>
+                  {DefaultHeader__Component()}
+                    <div style={{marginTop: '8px'}}>
+                      <Avatar
+                        className={classNames(classes.headerAvartar,{
+                          [classes.headerAvartarClose]: !this.props.open,
+                        })}
+                        onClick={this.handleMenuOpen}
+                        aria-owns={this.state.anchorEl ? 'simple-menu' : undefined}
+                        aria-haspopup="true"
+                        style={{backgroundColor: 'red'}}>
+                          <Typography fontWeight={2} variant="body2" color="white">
+                            My
+                          </Typography>
+                      </Avatar>
+                      <Menu
+                        className={classes.avatMenu}
+                        id="simple-menu"
+                        anchorEl={this.state.anchorEl}
+                        open={Boolean(this.state.anchorEl)}
+                         onClose={this.handleMenuClose}>
+                          {Menu_Item('Profile')}
+                          <Divider style={{backgroundColor: '#EAEAEA', height: '2px'}}/>
+                          {Menu_Item('Create new workspace')}
+                          {Menu_Item('Workspace Settings')}
+                          <Divider style={{backgroundColor: '#EAEAEA', height: '2px'}}/>
+                          {Menu_Item('User settings')}
+                          {Menu_Item('Sign out')}
+                      </Menu>
+                    </div>
+                </Toolbar>
+              </AppBar>
+       : <div></div>}
+       {/* workspace를 받을때 보여지는 화면은 따로 상수로 빼면 안됩니다. */}
       </div>
     )
   }

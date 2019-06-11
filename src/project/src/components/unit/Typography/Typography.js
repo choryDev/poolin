@@ -20,7 +20,7 @@ const Typography = ({ ...state }) => {
   const useStyles = makeStyles({
     defaultText:{
       textTransform: 'none',
-      fontFamily: 'montserrat',
+      fontFamily: 'Source Sans Pro, sans-serif',
       fontWeight: btnTextWeight ? font.fontWeight[1] :
                      fontWeight ? font.fontWeight[fontWeight] :font.fontWeight[0],
       color: color ? color : font.defaultFontColor,

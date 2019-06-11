@@ -70,7 +70,6 @@
     "react-redux": "^5.1.0",
     "react-render-html": "^0.6.0",
     "react-router-dom": "^4.3.1",
-    "react-saga": "^0.3.1",
     "react-select": "^2.1.1",
     "redux": "^4.0.1",
     "redux-form": "^7.4.2",

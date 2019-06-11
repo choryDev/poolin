@@ -122,12 +122,7 @@ class VI_CMPY_001Component extends Workspace {
 
   render() {
         const { classes } = this.props;
-        const wrap = {
-           paddingRight: '15px',
-           '&:hover':{
-             paddingRight: '0',
-            }
-          }
+
         const HeaderTitel=(weight,va,color,content,mr,mb) =>
          <Typography
           style={{
@@ -139,7 +134,8 @@ class VI_CMPY_001Component extends Workspace {
           {content}
         </Typography>
     return (
-        <div className={classNames(classes.root,classes.full)}>
+
+        <div className={classNames(classes.root)}>
           <div className={classes.header}>
               {HeaderTitel(2,'h5',color.gray.default,'Recent Status',48,0)}
               {HeaderTitel(2,'h5',color.gray.default,'5',8,0)}
@@ -159,7 +155,7 @@ class VI_CMPY_001Component extends Workspace {
             </div>
           </div>
           <div className={classes.wrap}>
-            <div className={classNames(classes.contantWrap,classes.full)}>
+            <div className={classNames(classes.contantWrap,classes.widthWrap)}>
               <div className={classNames(classes.contant,classes.full)}>
                 {HeaderTitel(3,'h6',color.gray.cardGray,'My Position / Pool',16,8)}
                 <div className={classes.itemW}>
@@ -169,7 +165,7 @@ class VI_CMPY_001Component extends Workspace {
                 </div>
               </div>
             </div>
-            <div className={classNames(classes.contantWrap,classes.full)}>
+            <div className={classNames(classes.contantWrap,classes.widthWrap)}>
               <div className={classNames(classes.contant,classes.full, classes.midcontant)}>
                 {HeaderTitel(3,'h6',color.gray.cardGray,'New Candidates',16,8)}
                 <div className={classes.itemW}>
@@ -187,7 +183,7 @@ class VI_CMPY_001Component extends Workspace {
                 </div>
               </div>
             </div>
-            <div className={classNames(classes.contantWrap,classes.full)}>
+            <div className={classNames(classes.contantWrap,classes.widthWrap)}>
               <div className={classNames(classes.contant,classes.full)}>
                {HeaderTitel(3,'h6',color.gray.cardGray,'My Tasks / Pool',16,8)}
                <div className={classes.itemW}>

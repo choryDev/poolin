@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import HeaderConatainer from '../containers/internal/HeaderConatainer';
+import HeaderConatainer from 'containers/internal/HeaderConatainer';
 import sendData from "../assets/utils/sendData";
 import classNames from 'classnames';
 import {Atag, Input, Typography} from './unit/index';

@@ -18,6 +18,7 @@ const PositionCard = ({ ...state }) => {
 
   const useStyles = makeStyles({
      cardRoot:{
+       height: '100px',
        padding: '12px',
        marginBottom: '8px'
      },
@@ -61,8 +62,8 @@ const PositionCard = ({ ...state }) => {
         </div>
         {smallText('Remote Location')}
       </div>
-      <div style={{display: 'flex'}}>
-        <div className={classes.flex} style={{width: '80%'}}>
+      <div style={{display: 'flex',justifyContent: 'space-between'}}>
+        <div className={classes.flex}>
            {data.pro.map((r,k)=>
             <Avatar 
               key={k}
@@ -72,7 +73,7 @@ const PositionCard = ({ ...state }) => {
             </Avatar>
             )} 
         </div>
-        <div style={{align : "right", width: '20%'}}>
+        <div style={{align : "right"}}>
           {smallText('Position or Pool')}
           {smallText(data.date)}
         </div>

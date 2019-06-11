@@ -17,7 +17,15 @@ const HistoryCard = ({ ...state }) => {
   const useStyles = makeStyles({
      cardRoot:{
        display: 'flex',
-       padding: '0 0 12px 0',
+      marginBottom: '8px'
+     },
+     itemWrap:{
+        width: '100%',
+        justifyContent: 'space-between',
+        display: 'flex',
+        flexDirection: 'column',
+        height: '56px',
+        paddingTop: '6px'
      },
      Wrap:{
       display: 'flex',
@@ -65,21 +73,19 @@ const HistoryCard = ({ ...state }) => {
         style={{color:'#6AD790'}}/>
         <div className={classes.line}/>
       </div>
-      <div style={{width: '100%'}}>
-        <div style={{minHeight: '48px'}}>
-          {Text(data.who,3)}
+      <div className={classes.itemWrap}>
+        <div>
+          {Text(data.who,4)}
           {blank}
           {Text('moved',2)}
           {blank}
-          {Text('HR Application',3)}
+          {Text('HR Application',4)}
           {blank}
           {Text('from',2)}
           {blank}
-          {Text('Software to Ios',3)}
+          {Text('Software to Ios',4)}
         </div>
-        <div>
          {smallText(`Due ${data.date}`, true)}
-        </div>
       </div>
     </div>
   
