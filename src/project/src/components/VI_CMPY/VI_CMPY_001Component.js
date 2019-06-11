@@ -153,7 +153,7 @@ class VI_CMPY_001Component extends Workspace {
             </div>
           </div>
           <div className={classes.wrap}>
-            <div className={classNames(classes.contantWrap,classes.full)}>
+            <div className={classNames(classes.contantWrap,classes.widthWrap)}>
               <div className={classNames(classes.contant,classes.full)}>
                 {HeaderTitel(3,'h6',color.gray.cardGray,'My Position / Pool',16,8)}
                 <div className={classes.itemW}>
@@ -163,7 +163,7 @@ class VI_CMPY_001Component extends Workspace {
                 </div>
               </div>
             </div>
-            <div className={classNames(classes.contantWrap,classes.full)}>
+            <div className={classNames(classes.contantWrap,classes.widthWrap)}>
               <div className={classNames(classes.contant,classes.full, classes.midcontant)}>
                 {HeaderTitel(3,'h6',color.gray.cardGray,'New Candidates',16,8)}
                 <div className={classes.itemW}>
@@ -181,7 +181,7 @@ class VI_CMPY_001Component extends Workspace {
                 </div>
               </div>
             </div>
-            <div className={classNames(classes.contantWrap,classes.full)}>
+            <div className={classNames(classes.contantWrap,classes.widthWrap)}>
               <div className={classNames(classes.contant,classes.full)}>
                {HeaderTitel(3,'h6',color.gray.cardGray,'My Tasks / Pool',16,8)}
                <div className={classes.itemW}>

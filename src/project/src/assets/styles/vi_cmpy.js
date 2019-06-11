@@ -14,8 +14,9 @@ const styles = theme => ({
     display: 'flex'
   },
   wrap:{
-     display: 'flex',
-     flex: 30
+    justifyContent:'space-around',
+    display: 'flex',
+    flex: 30
   },
   contantWrap:{
     padding: '24px',
@@ -70,6 +71,9 @@ const styles = theme => ({
   },
   Input003:{
     width: 'calc(100% - 80px)', 
+  },
+  widthWrap:{
+    width: '30rem'
   }
 }); 
 

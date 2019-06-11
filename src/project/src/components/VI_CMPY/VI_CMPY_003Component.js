@@ -80,7 +80,7 @@ class VI_CMPY_003Component extends Workspace {
         const { classes } = this.props;
         const Item = (r,i) =>
           <div className={classes.flex} key={i}>
-             <CheckCircle
+            <CheckCircle
               className={classes.checkOff}
               style={{margin: '4px 8px 0 0'}}/>
                 <div
