@@ -94,7 +94,7 @@ class VI_POL_105Component extends React.Component {
                   style={{width: `${170 + this.state.inputLeng>10 ? 170+(this.state.inputLeng-10)*4 : 0 }px`}}
                   name={'inputValue'}
                   onChange={e=>this.handleChanged(e)}
-                  onKeyDown={e=>{if(e.keyCode == 13)this.handlePush()}}
+                  onKeyDown={e=>{if(e.keyCode === 13)this.handlePush()}}
                   value={this.state.inputValue}
                   placeholder={'name@company.com, ...'}
                   className={classes.icbInput}/>

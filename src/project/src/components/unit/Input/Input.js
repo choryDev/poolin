@@ -12,7 +12,7 @@ const Input = ({ ...state }) => {
     children,
     className,
     color,
-    type,
+    shape,
     readOnly,
     ...other
   } = state;
@@ -58,7 +58,7 @@ const Input = ({ ...state }) => {
       <TextField
         {...other}
         className={classNames(className,classes.defaultInput,
-          type ? classes[type] : null)}
+          shape ? classes[shape] : null)}
         margin="normal"
         variant="outlined"/>
   </MuiThemeProvider>

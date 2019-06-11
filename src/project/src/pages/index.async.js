@@ -18,3 +18,7 @@ export const VI_CMPY_003 = Loadable({
   loader: () => import('../containers/VI_CMPY/VI_CMPY_003Container'),
   loading: () => <Loading />,
 });
+export const loading = Loadable({
+  loader: () =>  import('../assets/utils/Loading'),
+  loading: () => <Loading />,
+});

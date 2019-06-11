@@ -11,7 +11,8 @@ import Search from '@material-ui/icons/Search';
 import classNames from 'classnames';
 import Avatar from '@material-ui/core/Avatar';
 import { Typography, Input } from '../unit/index';
-import color from '../../assets/styles/material/com/color'
+import color from '../../assets/styles/material/com/color';
+import UsrModal from '../../containers/VI_USR/VI_USR_ModalContainer';
 
 class HeaderComponent extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class HeaderComponent extends React.Component {
       this.state={
         search:'',
         anchorEl: null,
+        usrModal:false,
       };
       this.handleChanged = this.handleChanged.bind(this);
       this.handleMenuOpen = this.handleMenuOpen.bind(this);
@@ -50,12 +52,18 @@ class HeaderComponent extends React.Component {
     this.setState({anchorEl: null});
   } 
 
+  handleModal(){
+    this.setState({
+      usrModal: !this.state.usrModal
+    })
+  }
+
   render() {
     const { classes, handleOpen, workspace } = this.props;
-    const Menu_Item = (title) =>
+    const Menu_Item = (title,func) =>
       <MenuItem
         className={classes.MenuItem}
-        onClick={this.handleMenuClose}>
+        onClick={func}>
         <Typography
           className={classes.textCenter}
         fontWeight={2} variant="body2">
@@ -147,12 +155,13 @@ class HeaderComponent extends React.Component {
                 anchorEl={this.state.anchorEl}
                 open={Boolean(this.state.anchorEl)}
                  onClose={this.handleMenuClose}>
-                  {Menu_Item('Profile')}
+                  {Menu_Item('Project(1)')}
+                  {Menu_Item('Pool (1)')}
                   <Divider style={{backgroundColor: '#EAEAEA', height: '2px'}}/>
                   {Menu_Item('Create new workspace')}
                   {Menu_Item('Workspace Settings')}
                   <Divider style={{backgroundColor: '#EAEAEA', height: '2px'}}/>
-                  {Menu_Item('User settings')}
+                  {Menu_Item('User settings',()=> this.handleModal())}
                   {Menu_Item('Sign out')}
               </Menu>
             </div>
@@ -160,6 +169,9 @@ class HeaderComponent extends React.Component {
       </AppBar>
        : <div></div>}
        {/* workspace를 받을때 보여지는 화면은 따로 상수로 빼면 안됩니다. */}
+       <UsrModal
+        open={this.state.usrModal}
+        handleModal={()=>this.handleModal()}/>
       </div>
     )
   }
