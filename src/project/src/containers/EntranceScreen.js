@@ -4,13 +4,15 @@ import EntranceComponent from '../components/EntranceComponent';
 import styles from '../assets/styles/entrance';
 import {withStyles} from "@material-ui/core";
 import {notInWorkspace} from "../actions/behave/ConfigAction";
+import {fetchListProject} from "../actions/behave/SessionAction";
 
 const mapState = state => ({
 
 });
 
 const mapDispatch = dispatch => ({
-  notInWorkspace: () => dispatch(notInWorkspace())
+  notInWorkspace: () => dispatch(notInWorkspace()),
+  fetchListProject: projectId => dispatch(fetchListProject(projectId))
 });
 
 const EntranceScreen = connect(mapState, mapDispatch)(

@@ -3,41 +3,20 @@ import classNames from 'classnames';
 import { Typography, ThreeRadioButton, RequiredButton } from '../unit/index'
 
 const state = {
-  pstTitle: '',
-  department: '',
-  id: '',
-  country: '',
-  phoneNum: 'optional',
-  resumeUpload: 'optional',
-  experienceSm: 'optional',
-  workHistory: 'optional',
-  education: 'optional',
-  coverLetter: 'optional',
-  expiArr: [{title: 'Resume Upload', value: 'resumeUpload'},
-            {title: 'Experience Summary', value: 'experienceSm'},
-            {title: 'Work History', value: 'workHistory'},
-            {title: 'Education', value: 'education'}],
   emailKey: 'asdfasdfsadfasdfasdfsadfdsf'
 }
 
 class VI_POL_102Component extends React.Component {
+
   constructor(props){
     super(props);
-    this.state=state;
-  this.handleChanged=this.handleChanged.bind(this);
+    this.state = state;
   }
   
-  handleChanged(e){
-    const {name, value} = e.target;
-    this.setState({
-      [name]: value
-    })
-  }
-
-
   render() {
     const { classes } = this.props;
-    const radiobtn__Component = (title,value,idx)=>
+
+    const radiobtn__Component = (title, value, idx) =>
       <div className={classes.item102} key={idx}>
         <Typography
           style={{marginTop: 'auto',marginBottom: 'auto'}}
@@ -47,10 +26,11 @@ class VI_POL_102Component extends React.Component {
         </Typography>
         <ThreeRadioButton
           style={{height: '22px'}}
-          handleChanged={e=>this.handleChanged(e)}
+          handleChanged={this.props.handleChangeRadio}
           name={value}
-          value={this.state[value]}/>
+          value={this.props[value]}/>
       </div>;
+
     const btn__Component = (title)=>
     <div className={classes.item102}>
       <Typography
@@ -64,6 +44,7 @@ class VI_POL_102Component extends React.Component {
         Required
       </RequiredButton>
     </div>;
+
     const viaEmailText1 = 'If shared, candidates may apply via email using the follwing email address.'
     const viaEmailText2 = 'The message body will be added as the summary, attached resumes will be embedded and the name/email address will be userd to create the canadidate.'
     return (
@@ -93,23 +74,25 @@ class VI_POL_102Component extends React.Component {
         </Typography>
         {btn__Component('Name')}
         {btn__Component('Email Address')}
-        {radiobtn__Component('Phone Number', 'phoneNum')}
+        {radiobtn__Component('Phone Number', 'phone_required')}
         <Typography
           variant={'subtitle1'}
           fontWeight={3}
           className={classNames(classes.marginTop25,classes.marginBtm10)}>
           Experience
         </Typography>
-        {this.state.expiArr.map((r,i)=>
-          radiobtn__Component(r.title,r.value,i)
-        )}
+          {radiobtn__Component('Resume Upload','resume_required')}
+          {radiobtn__Component('Experience Summary', 'experience_required')}
+          {radiobtn__Component('Work History', 'workHistory_required')}
+          {radiobtn__Component('Education', 'education_required')}
+
         <Typography
           variant={'subtitle1'}
           fontWeight={3}
           className={classNames(classes.marginTop25,classes.marginBtm10)}>
           General
         </Typography>
-        {radiobtn__Component('Cover Letter', 'coverLetter')}
+        {radiobtn__Component('Cover Letter', 'coverLetter_required')}
         <Typography
           variant={'subtitle1'}
           fontWeight={3}

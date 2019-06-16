@@ -14,9 +14,7 @@ class FooterComponent extends React.Component {
                 &copy; 2019 <Link to="#" className="font-weight-bold ml-1" target="_blank">enLight works</Link>
               </div>
             </div>
-
             {children}
-
           </div>
         </div>
       </footer>

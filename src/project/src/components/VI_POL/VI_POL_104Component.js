@@ -12,7 +12,7 @@ import classNames from 'classnames';
 import color from '../../assets/styles/material/com/color'
 import { Typography, Autocomplete2, Input, BgNoneBtn } from '../unit/index'
 
-import { countrys } from './dump'
+import { countries } from './dump'
 
 const state = {
   lang: '',
@@ -35,6 +35,7 @@ const state = {
 }
 
 class VI_POL_104Component extends React.Component {
+
   constructor(props){
     super(props);
     this.state=state;
@@ -130,7 +131,8 @@ class VI_POL_104Component extends React.Component {
           className="fas fa-plus"/>
           Add Item
         </BgNoneBtn> 
-    </div>; 
+    </div>;
+
     const subModal =()=>
       <Dialog
       open={this.state.open}
@@ -174,6 +176,7 @@ class VI_POL_104Component extends React.Component {
       </Button>
       </DialogActions>
     </Dialog>;
+
     const subText1 = 'Scorecards define custom criteria your Hiring Team will use to evaluate candidates.'
         return (
       <div className={classes.VI_POL_102}>
@@ -215,7 +218,7 @@ class VI_POL_104Component extends React.Component {
             placeholder='언어'
             keywordValue='value'
             keywordView='name'
-            array={countrys}
+            array={countries}
             valueName='lang'
             handleautocomplete={(name, value) =>
             this.handleautocomplete(name, value)}

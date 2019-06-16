@@ -123,7 +123,7 @@ class VI_CMPY_001Component extends Workspace {
   render() {
         const { classes } = this.props;
 
-        const HeaderTitel=(weight,va,color,content,mr,mb) =>
+        const HeaderTitle = (weight,va,color,content,mr,mb) =>
          <Typography
           style={{
             marginRight: `${mr}px`,
@@ -137,27 +137,27 @@ class VI_CMPY_001Component extends Workspace {
 
         <div className={classNames(classes.root)}>
           <div className={classes.header}>
-              {HeaderTitel(2,'h5',color.gray.default,'Recent Status',48,0)}
-              {HeaderTitel(2,'h5',color.gray.default,'5',8,0)}
+              {HeaderTitle(2,'h5',color.gray.default,'Recent Status',48,0)}
+              {HeaderTitle(2,'h5',color.gray.default,'5',8,0)}
             <div>
-              {HeaderTitel(1,'caption',color.gray.weakGray,'New',0,0)}
-              {HeaderTitel(1,'caption',color.gray.weakGray,'Candidates',16,0)}
+              {HeaderTitle(1,'caption',color.gray.weakGray,'New',0,0)}
+              {HeaderTitle(1,'caption',color.gray.weakGray,'Candidates',16,0)}
             </div>
-            {HeaderTitel(2,'h5',color.gray.default,'5',8)}
+              {HeaderTitle(2,'h5',color.gray.default,'5',8)}
             <div>
-              {HeaderTitel(1,'caption',color.gray.weakGray,'Candidates',0,0)}
-              {HeaderTitel(1,'caption',color.gray.weakGray,'Moved Forward',16,0)}
+              {HeaderTitle(1,'caption',color.gray.weakGray,'Candidates',0,0)}
+              {HeaderTitle(1,'caption',color.gray.weakGray,'Moved Forward',16,0)}
             </div>
-            {HeaderTitel(2,'h5',color.gray.default,'5',8,0)}
+              {HeaderTitle(2,'h5',color.gray.default,'5',8,0)}
             <div>
-              {HeaderTitel(1,'caption',color.gray.weakGray,'Candidates',0,0)}
-              {HeaderTitel(1,'caption',color.gray.weakGray,'Hired',16,0)}
+              {HeaderTitle(1,'caption',color.gray.weakGray,'Candidates',0,0)}
+              {HeaderTitle(1,'caption',color.gray.weakGray,'Hired',16,0)}
             </div>
           </div>
           <div className={classes.wrap}>
             <div className={classNames(classes.contantWrap,classes.widthWrap)}>
               <div className={classNames(classes.contant,classes.full)}>
-                {HeaderTitel(3,'h6',color.gray.cardGray,'My Position / Pool',16,8)}
+                {HeaderTitle(3,'h6',color.gray.cardGray,'My Position / Pool',16,8)}
                 <div className={classes.itemW}>
                   {this.state.MyPosiArr.map((r,k)=>
                       <PositionCard key={k} data={r}/>
@@ -167,7 +167,7 @@ class VI_CMPY_001Component extends Workspace {
             </div>
             <div className={classNames(classes.contantWrap,classes.widthWrap)}>
               <div className={classNames(classes.contant,classes.full, classes.midcontant)}>
-                {HeaderTitel(3,'h6',color.gray.cardGray,'New Candidates',16,8)}
+                {HeaderTitle(3,'h6',color.gray.cardGray,'New Candidates',16,8)}
                 <div className={classes.itemW}>
                   {this.state.Task.map((r,k)=>
                       <CandidateCard key={k} data={r}/>
@@ -175,7 +175,7 @@ class VI_CMPY_001Component extends Workspace {
                 </div>
               </div>
               <div className={classNames(classes.contant,classes.full, classes.midcontant)}>
-                {HeaderTitel(3,'h6',color.gray.cardGray,'History',16,8)}
+                {HeaderTitle(3,'h6',color.gray.cardGray,'History',16,8)}
                 <div className={classes.itemW}>
                   {this.state.Task.map((r,k)=>
                       <HistoryCard key={k} data={r}/>
@@ -185,7 +185,7 @@ class VI_CMPY_001Component extends Workspace {
             </div>
             <div className={classNames(classes.contantWrap,classes.widthWrap)}>
               <div className={classNames(classes.contant,classes.full)}>
-               {HeaderTitel(3,'h6',color.gray.cardGray,'My Tasks / Pool',16,8)}
+               {HeaderTitle(3,'h6',color.gray.cardGray,'My Tasks / Pool',16,8)}
                <div className={classes.itemW}>
                   {this.state.Task.map((r,k)=>
                       <TaskCard key={k} data={r}/>

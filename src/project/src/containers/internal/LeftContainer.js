@@ -7,7 +7,10 @@ import {drawerOpen} from "../../actions/behave/ConfigAction";
 import { changeHeaderTitle } from '../../actions/behave/HeaderReducer';
 
 const mapState = state => ({
-  workspace: state.ConfigReducer.toJS().workspace
+  workspace: state.ConfigReducer.toJS().workspace,
+  workspaceId: state.SessionReducer.toJS().workspaceId,
+  projectList: state.SessionReducer.toJS().projectList,
+  loading_project_list: state.SessionReducer.toJS().loading_project_list,
 });
 
 const mapDispatch = dispatch => ({

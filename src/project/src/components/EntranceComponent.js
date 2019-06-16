@@ -91,7 +91,7 @@ class EntranceComponent extends React.Component {
           {this.state.workspaces.map((row, i) =>
              <CompanyCard component={Link} to={`/${row.workspace_id}/overview`}
                           headColor={row.color}
-                          onClick={() => console.log('alskdjflaksjdfas')}
+                          onClick={() => this.props.fetchListProject(row.workspace_id)}
                           key={i}
                           title={row.workspace_name}/>)}
         </div>

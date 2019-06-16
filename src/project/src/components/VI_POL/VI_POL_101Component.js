@@ -2,42 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 import blue from '@material-ui/core/colors/blue';
 import { Input, Typography, Autocomplete } from '../unit/index'
-
-import { countrys } from './dump'
-
-const state = {
-  pstTitle: '',
-  department: '',
-  id: '',
-  country: '',
-  checkBox: false,
-}
+import { countries } from './dump'
 
 class VI_POL_101Component extends React.Component {
 
   constructor(props){
     super(props);
-    this.state=state;
-    this.handleChanged=this.handleChanged.bind(this);
-    this.handleautocomplete=this.handleautocomplete.bind(this);
   }
 
-  handleChanged(e,flg){
-    var obj;
-    const {name, value, checked} = e.target;
-    if(flg==='checkbox'){
-      obj={[name]: checked};
-    }else{
-      obj={[name]: value};
-    }
-    this.setState(obj);
-  }
-
-  handleautocomplete(name,value) {
-    this.setState({
-      [name]: value,
-    });
-  }
 
   render() {
     const { classes } = this.props;
@@ -52,26 +24,39 @@ class VI_POL_101Component extends React.Component {
         <Input 
           autoComplete={'off'}
           placeholder='Position Title *'
-          value={this.state.pstTitle}
-          onChange={e=>{this.handleChanged(e);this.props.handleHeaderChanged(e)}}
-          name={'pstTitle'}
-          className={classNames(classes.marginBtm10,classes.titleInput)}
-          shape={'sm'} 
-          color={blue}/>
+          value={this.props.project_name}
+          onChange={e => {
+              this.props.handleChangedStep1(e);
+              this.props.handleHeaderChanged(e)
+          }}
+          onBlur={() => {
+              if(this.props.newable) {
+                  this.props.addNewOne();
+              }
+          }}
+          name={'project_name'}
+          className={classNames(classes.marginBtm10, classes.titleInput)}
+          shape={'sm'}
+          color={blue}
+        />
         <div>
           <Input 
             placeholder='Department'
-            value={this.state.department}
-            onChange={e=>this.handleChanged(e)}
-            name={'department'}
-            className={classes.subInput} 
+            value={this.props.department}
+            onChange={e=>this.props.handleChangedStep1(e)}
+            name={'project_department'}
+            className={classes.subInput}
+            disabled={this.props.newable}
+            readOnly={this.props.newable}
             shape={'sm'} 
             color={blue}/>
           <Input 
             placeholder='Internal ID'
-            value={this.state.id}
-            onChange={e=>this.handleChanged(e)}
-            name={'id'}
+            value={this.props.project_internal_id}
+            onChange={e=>this.props.handleChangedStep1(e)}
+            name={'project_internal_id'}
+            disabled={this.props.newable}
+            readOnly={this.props.newable}
             className={classes.subInput} 
             shape={'sm'} 
             color={blue}/>
@@ -86,18 +71,22 @@ class VI_POL_101Component extends React.Component {
           placeholder='Country *'
           keywordValue='value'
           keywordView='name'
-          array={countrys}
+          array={countries}
           valueName='country'
-          handleautocomplete={(name, value) =>
-          this.handleautocomplete(name, value)}
+          disabled={this.props.newable}
+          readOnly={this.props.newable}
+          view={this.props.location}
+          handleautocomplete={(name, value) => this.props.handleautocomplete('location', value)}
           style={{marginBottom: '10px'}}/>
-          <div style={{display: 'flex'}}>
+        <div style={{display: 'flex'}}>
             <input
               type='checkbox'
-              name='checkBox'
-              checked={this.state.checkBox}
+              name='remote'
+              disabled={this.props.newable}
+              readOnly={this.props.newable}
+              checked={this.props.remote}
               className={classes.checkBox}
-              onChange={e=>this.handleChanged(e,'checkbox')}/>
+              onChange={e=>this.props.handleChangedStep1(e,'checkbox')}/>
             <Typography
               style={{marginTop: 'auto'}}
               variant={'caption'}
@@ -113,41 +102,45 @@ class VI_POL_101Component extends React.Component {
         </Typography>
         <div style={{display: 'flex',marginBottom: '10px'}}>
           <Autocomplete
-            placeholder='Country *'
-            keywordValue='value'
-            keywordView='name'
-            array={countrys}
-            valueName='country'
-            handleautocomplete={(name, value) =>
-            this.handleautocomplete(name, value)}
+            placeholder='Type Of Position'
+            keywordValue='code_value'
+            keywordView='code_name'
+            disabled={this.props.newable}
+            readOnly={this.props.newable}
+            array={this.props.typePosition}
+            valueName='typePosition'
+            handleautocomplete={(name, value) => this.props.handleautocomplete('position_type', value)}
             style={{marginRight: '10px'}}/>
           <Autocomplete
-            placeholder='Country *'
-            keywordValue='value'
-            keywordView='name'
-            array={countrys}
-            valueName='country'
-            handleautocomplete={(name, value) =>
-            this.handleautocomplete(name, value)}/>
+            placeholder='Category'
+            keywordValue='code_value'
+            keywordView='code_name'
+            array={this.props.typeCategory}
+            valueName='typeCategory'
+            disabled={this.props.newable}
+            readOnly={this.props.newable}
+            handleautocomplete={(name, value) => this.props.handleautocomplete('category', value)}/>
         </div>
         <div style={{display: 'flex',marginBottom: '10px'}}>
           <Autocomplete
-            placeholder='Country *'
-            keywordValue='value'
-            keywordView='name'
-            array={countrys}
-            valueName='country'
-            handleautocomplete={(name, value) =>
-            this.handleautocomplete(name, value)}
-            style={{marginRight: '10px'}}/>
+            placeholder='Education'
+            keywordValue='code_value'
+            keywordView='code_name'
+            disabled={this.props.newable}
+            readOnly={this.props.newable}
+            array={this.props.typeEdu}
+            valueName='typeEdu'
+            handleautocomplete={(name, value) => this.props.handleautocomplete('education', value)}
+            style={{marginRight: '10px'}} />
           <Autocomplete
-            placeholder='Country *'
-            keywordValue='value'
-            keywordView='name'
-            array={countrys}
-            valueName='country'
-            handleautocomplete={(name, value) =>
-            this.handleautocomplete(name, value)}/>
+              placeholder='Experience'
+              keywordValue='code_value'
+              keywordView='code_name'
+              disabled={this.props.newable}
+              readOnly={this.props.newable}
+              array={this.props.typeExp}
+              valueName='typeExp'
+              handleautocomplete={(name, value) => this.props.handleautocomplete('experience', value)}/>
         </div>
       </div>
     )

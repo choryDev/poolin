@@ -80,20 +80,20 @@ const ThreeRadioButton = ({ ...state }) => {
           onChange={handleChanged}>
           <FormControlLabel
             className={classNames(classes.defaultItem,
-              value==="required" ? classes.onItem : classes.offItem)}
-            value="required"
+              value === "500-001" ? classes.onItem : classes.offItem)}
+            value="500-001"
             control={<Radio />}
             label="Required" />
           <FormControlLabel
             className={classNames(classes.defaultItem,
-              value==="optional" ? classes.onItem : classes.offItem)}
-            value="optional"
+              value === "500-002" ? classes.onItem : classes.offItem)}
+            value="500-002"
             control={<Radio />}
             label="Optional" />
           <FormControlLabel
             className={classNames(classes.defaultItem,
-              value==="disabled" ? classes.onItem : classes.offItem)}
-            value="disabled"
+              value === "500-003" ? classes.onItem : classes.offItem)}
+            value="500-003"
             control={<Radio />}
             label="Disabled" />
         </RadioGroup>

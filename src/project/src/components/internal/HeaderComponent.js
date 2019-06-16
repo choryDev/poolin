@@ -24,13 +24,13 @@ class HeaderComponent extends React.Component {
       this.handleChanged = this.handleChanged.bind(this);
       this.handleMenuOpen = this.handleMenuOpen.bind(this);
       this.handleMenuClose = this.handleMenuClose.bind(this);
+
+      let pathname = window.location.pathname;
+      let workspaceId = pathname.split('/')[1];
+      if(workspaceId !== undefined && workspaceId !== '')
+          this.props.fetchListProject(workspaceId);
   }
 
-
-  componentDidMount() {
-
-  }
-  
   componentWillReceiveProps(nextProps, nextContext) {
     if(this.props.open !== nextProps.workspace && !nextProps.workspace){
       this.props.close();

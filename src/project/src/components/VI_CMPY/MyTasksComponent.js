@@ -11,7 +11,7 @@ import color from '../../assets/styles/material/com/color'
 
 import { Typography } from '../unit/index'
 
-class VI_CMPY_003Component extends Workspace {
+class MyTasksComponent extends Workspace {
   constructor(props){
     super(props)
     this.state={
@@ -149,4 +149,4 @@ class VI_CMPY_003Component extends Workspace {
   }
 }
 
-export default VI_CMPY_003Component
+export default MyTasksComponent

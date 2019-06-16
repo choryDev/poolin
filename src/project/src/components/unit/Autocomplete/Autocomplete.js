@@ -20,12 +20,6 @@ class AutoComponent extends React.Component {
     this.textView = React.createRef();
   }
 
-  // handleautocomplete(name,value) { props로 받는 함수 입니다.
-  //   this.setState({
-  //     [name]: value,
-  //   });
-  // }
-  
   componentDidUpdate() {
     this.textInput.current.focus();
   }
@@ -57,9 +51,6 @@ class AutoComponent extends React.Component {
 
     const {
       className,
-      // color,
-      // children,
-      //보여질 배열과 바뀔 변수와 변수 명입니다
       array,
       viewValueName,
       placeholder,
@@ -74,7 +65,7 @@ class AutoComponent extends React.Component {
     const showSwitch = {
       display: this.state.show ? 'block' : 'none',
     }
-    const filter_list =array.filter(m => m[`${keywordView}`].toLowerCase().includes(this.state.inputValue.toLowerCase()));
+    const filter_list = array !== undefined ? array.filter(m => m[`${keywordView}`].toLowerCase().includes(this.state.inputValue.toLowerCase())) : array;
     return (
       <div className={classNames(classes.autoComplete,className ? className : classes.defaultAutoComplete)}  {...other} style={style} >
         <input
@@ -103,7 +94,7 @@ class AutoComponent extends React.Component {
           </div>
           <div className={classes.scrollbeauti}>
             <div className={classes.itemList}>
-              {filter_list.sort().map(((r, i) => (
+              {filter_list !== undefined ? filter_list.sort().map(((r, i) => (
                <div
                 key={i}
                 className={classes.item}
@@ -113,7 +104,7 @@ class AutoComponent extends React.Component {
                     this.handleShowOpen()}}>
                 {r[keywordView]}
                </div>
-            )))}
+            ))) : []}
           </div>
           </div>
         </div>
@@ -122,7 +113,6 @@ class AutoComponent extends React.Component {
     );
   }
 };
-
 
 const Autocomplete = withStyles(css, { withTheme: true })(AutoComponent)
 
