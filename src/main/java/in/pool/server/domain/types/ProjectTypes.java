@@ -1,6 +1,7 @@
 package in.pool.server.domain.types;
 
 public enum ProjectTypes {
+
     RECRUITING("501-001"), POOL("501-002");
 
     private String projectType;

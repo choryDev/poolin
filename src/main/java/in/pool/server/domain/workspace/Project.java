@@ -96,4 +96,5 @@ public class Project {
     public void setProjectType(ProjectTypes projectType) {
         this.projectType = projectType;
     }
+
 }

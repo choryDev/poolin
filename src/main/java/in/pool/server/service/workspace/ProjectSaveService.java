@@ -132,6 +132,7 @@ public class ProjectSaveService extends CoreSpace {
                 if(bePresent(reqDto.getCategory())) info.setCategory(reqDto.getCategory());
                 if(bePresent(reqDto.getEducation())) info.setEducation(reqDto.getEducation());
                 if(bePresent(reqDto.getExperience())) info.setExperience(reqDto.getExperience());
+                infoRepository.save(info);
 
                 response.setProject_id(reqDto.getSessProject().getProjectId());
                 response.setProject_description(info.getDescription());
@@ -171,7 +172,7 @@ public class ProjectSaveService extends CoreSpace {
                     if (bePresent(reqDto.getCoverLetter_required())) required.setCoverLetterRequired(reqDto.getCoverLetter_required());
                     requiredRepository.save(required);
 
-                    response.setName_reuqired(required.getNameRequired());
+                    response.setName_required(required.getNameRequired());
                     response.setEmail_required(required.getEmailRequired());
                     response.setPhone_required(required.getPhoneRequired());
                     response.setResume_required(required.getResumeRequired());

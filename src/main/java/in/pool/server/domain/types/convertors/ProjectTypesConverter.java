@@ -6,6 +6,7 @@ import in.pool.server.domain.types.RequiredTypes;
 import javax.persistence.AttributeConverter;
 
 public class ProjectTypesConverter implements AttributeConverter<ProjectTypes, String> {
+
     @Override
     public String convertToDatabaseColumn(ProjectTypes attribute) {
         return attribute.getProjectType();

@@ -4,6 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="comm.comm">
+    <select id="getCodes" parameterType="hmap" resultType="hmap">
+        select a.comm_cd as code_value,
+               b.lang as code_name
+          from (select *
+                  from com_prjt_mst
+                 where up_comm_cd = #{upCode}) a
+               join (select *
+                       from sys_lang_mst
+                      where up_lang_cd = #{upLang}
+                        and lang_tp = #{lang}) b on a.lang_cd = b.lang_cd
+    </select>
     <select id="getMessage" parameterType="hmap" resultType="string">
         SELECT LANG
           FROM SYS_LANG_MST

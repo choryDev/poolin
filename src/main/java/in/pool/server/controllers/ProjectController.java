@@ -44,7 +44,7 @@ public class ProjectController {
     }
 
     @GetMapping(ENV.PUBLIC_PROJECT + "/general")
-    public ResponseEntity getProjectGeneral(@PathVariable String layer,@PathVariable String sess_workspace_id, @PathVariable String sess_project_id, HttpServletRequest httpServletRequest, @RequestBody ProjectReqDto reqDto){
+    public ResponseEntity getProjectGeneral(@PathVariable String layer,@PathVariable String sess_workspace_id, @PathVariable String sess_project_id, HttpServletRequest httpServletRequest, ProjectReqDto reqDto){
         reqDto.setSess_layer(SessionLayerTypes.getLayerType(layer));
         reqDto.setSess_workspace_id(sess_workspace_id);
         reqDto.setSess_project_id(sess_project_id);

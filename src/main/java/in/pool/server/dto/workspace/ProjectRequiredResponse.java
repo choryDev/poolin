@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter @Setter
 public class ProjectRequiredResponse extends ResponseDto {
 
-    private RequiredTypes name_reuqired;
+    private RequiredTypes name_required;
 
     private RequiredTypes email_required;
 
@@ -25,7 +25,7 @@ public class ProjectRequiredResponse extends ResponseDto {
     private RequiredTypes coverLetter_required;
 
     public String getName_reuqired() {
-        return name_reuqired.getRequired();
+        return name_required.getRequired();
     }
 
     public String getEmail_required() {

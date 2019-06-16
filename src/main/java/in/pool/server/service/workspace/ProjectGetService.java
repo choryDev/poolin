@@ -34,7 +34,7 @@ public class ProjectGetService extends CoreSpace {
         requiredRepository
                 .findByProjectNo(reqDto.getSessProject().getProjectNo())
                 .ifPresentOrElse(required -> {
-                    response.setName_reuqired(required.getNameRequired());
+                    response.setName_required(required.getNameRequired());
                     response.setEmail_required(required.getEmailRequired());
                     response.setPhone_required(required.getPhoneRequired());
                     response.setResume_required(required.getResumeRequired());

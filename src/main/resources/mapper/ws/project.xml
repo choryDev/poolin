@@ -44,7 +44,7 @@
     <select id="generalInformation" parameterType="hmap" resultType="hmap">
         SELECT PRJT_NM AS project_name,
                DEPT_NM AS project_department,
-               INTERNAL_ID AS porject_internal_id,
+               INTERNAL_ID AS project_internal_id,
                LOCATION AS location,
                CITY AS city,
                REMOTE AS remote,

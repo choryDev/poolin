@@ -39,11 +39,11 @@ public class WorkspaceController {
         return authRunner.execute(httpServletRequest, workspaceReqDto, wsSaveService::updateWorkspace, response -> new ResponseLinks(response));
     }
 
-    @GetMapping(ENV.PUBLIC_ME + "/workspaces")
-    public ResponseEntity fetchListWorkspace(@PathVariable String layer, HttpServletRequest httpServletRequest, WorkspaceReqDto workspaceReqDto){
-        workspaceReqDto.setSess_layer(SessionLayerTypes.getLayerType(layer));
-        return authRunner.execute(httpServletRequest, workspaceReqDto, wsGetService::getListWorkspace, response -> new ResponseLinks(response));
-    }
+//    @GetMapping(ENV.PUBLIC_ME + "/workspaces")
+//    public ResponseEntity fetchListWorkspace(@PathVariable String layer, HttpServletRequest httpServletRequest, WorkspaceReqDto workspaceReqDto){
+//        workspaceReqDto.setSess_layer(SessionLayerTypes.getLayerType(layer));
+//        return authRunner.execute(httpServletRequest, workspaceReqDto, wsGetService::getListWorkspace, response -> new ResponseLinks(response));
+//    }
 
     @GetMapping(ENV.PUBLIC_WORKSPACE + "/members")
     public ResponseEntity getMembersInWorkspace(@PathVariable String layer, @PathVariable String sess_workspace_id, HttpServletRequest httpServletRequest, @RequestBody WorkspaceReqDto workspaceReqDto){
