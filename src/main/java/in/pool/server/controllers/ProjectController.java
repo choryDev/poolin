@@ -44,11 +44,58 @@ public class ProjectController {
     }
 
     @GetMapping(ENV.PUBLIC_PROJECT + "/general")
-    public ResponseEntity getProject(@PathVariable String layer,@PathVariable String sess_workspace_id, @PathVariable String sess_project_id, HttpServletRequest httpServletRequest, @RequestBody ProjectReqDto reqDto){
+    public ResponseEntity getProjectGeneral(@PathVariable String layer,@PathVariable String sess_workspace_id, @PathVariable String sess_project_id, HttpServletRequest httpServletRequest, @RequestBody ProjectReqDto reqDto){
         reqDto.setSess_layer(SessionLayerTypes.getLayerType(layer));
         reqDto.setSess_workspace_id(sess_workspace_id);
         reqDto.setSess_project_id(sess_project_id);
         return authRunner.execute(httpServletRequest, reqDto, projectGetService::getInformation, response -> new ResponseLinks(response));
     }
 
+    @PatchMapping(ENV.PUBLIC_PROJECT + "/required")
+    public ResponseEntity updateRequired(@PathVariable String layer,@PathVariable String sess_workspace_id, @PathVariable String sess_project_id, HttpServletRequest httpServletRequest, @RequestBody ProjectReqDto reqDto){
+        reqDto.setSess_layer(SessionLayerTypes.getLayerType(layer));
+        reqDto.setSess_workspace_id(sess_workspace_id);
+        reqDto.setSess_project_id(sess_project_id);
+        return authRunner.execute(httpServletRequest, reqDto, projectSaveService::updateRequired, response -> new ResponseLinks(response));
+    }
+
+    @GetMapping(ENV.PUBLIC_PROJECT + "/required")
+    public ResponseEntity getRequired(@PathVariable String layer,@PathVariable String sess_workspace_id, @PathVariable String sess_project_id, HttpServletRequest httpServletRequest, ProjectReqDto reqDto){
+        reqDto.setSess_layer(SessionLayerTypes.getLayerType(layer));
+        reqDto.setSess_workspace_id(sess_workspace_id);
+        reqDto.setSess_project_id(sess_project_id);
+        return authRunner.execute(httpServletRequest, reqDto, projectGetService::getRequired, response -> new ResponseLinks(response));
+    }
+
+    @PostMapping(ENV.PUBLIC_PROJECT + "/scorecard")
+    public ResponseEntity updateScorecard(@PathVariable String layer,@PathVariable String sess_workspace_id, @PathVariable String sess_project_id, HttpServletRequest httpServletRequest, @RequestBody ProjectReqDto reqDto){
+        reqDto.setSess_layer(SessionLayerTypes.getLayerType(layer));
+        reqDto.setSess_workspace_id(sess_workspace_id);
+        reqDto.setSess_project_id(sess_project_id);
+        return authRunner.execute(httpServletRequest, reqDto, projectSaveService::updateScorecard, response -> new ResponseLinks(response));
+    }
+
+    @GetMapping(ENV.PUBLIC_PROJECT + "/scorecard")
+    public ResponseEntity getScorecardList(@PathVariable String layer,@PathVariable String sess_workspace_id, @PathVariable String sess_project_id, HttpServletRequest httpServletRequest, ProjectReqDto reqDto){
+        reqDto.setSess_layer(SessionLayerTypes.getLayerType(layer));
+        reqDto.setSess_workspace_id(sess_workspace_id);
+        reqDto.setSess_project_id(sess_project_id);
+        return authRunner.execute(httpServletRequest, reqDto, projectGetService::getScorecardList, response -> new ResponseLinks(response));
+    }
+
+    @PostMapping(ENV.PUBLIC_PROJECT + "/member")
+    public ResponseEntity addNewMembers(@PathVariable String layer,@PathVariable String sess_workspace_id, @PathVariable String sess_project_id, HttpServletRequest httpServletRequest, @RequestBody ProjectReqDto reqDto){
+        reqDto.setSess_layer(SessionLayerTypes.getLayerType(layer));
+        reqDto.setSess_workspace_id(sess_workspace_id);
+        reqDto.setSess_project_id(sess_project_id);
+        return authRunner.execute(httpServletRequest, reqDto, projectSaveService::addNewMember, response -> new ResponseLinks(response));
+    }
+
+    @DeleteMapping(ENV.PUBLIC_PROJECT + "/member")
+    public ResponseEntity deleteMember(@PathVariable String layer,@PathVariable String sess_workspace_id, @PathVariable String sess_project_id, HttpServletRequest httpServletRequest, ProjectReqDto reqDto){
+        reqDto.setSess_layer(SessionLayerTypes.getLayerType(layer));
+        reqDto.setSess_workspace_id(sess_workspace_id);
+        reqDto.setSess_project_id(sess_project_id);
+        return authRunner.execute(httpServletRequest, reqDto, projectSaveService::deleteMember, response -> new ResponseLinks(response));
+    }
 }

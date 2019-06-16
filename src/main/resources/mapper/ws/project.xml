@@ -5,6 +5,42 @@
 
 <mapper namespace="ws.project">
 
+    <resultMap id="scorecardMap" type="hmap">
+        <result property="scorecard_no" column="scorecard_no"/>
+        <result property="content" column="content"/>
+        <result property="lev" column="lev"/>
+    </resultMap>
+    <resultMap id="listOfScorecard" type="hmap">
+        <result property="id" column="up_scorecard_no"/>
+        <result property="category" column="category"/>
+        <collection property="list" column="up_scorecard_no" javaType="java.util.ArrayList" resultMap="scorecardMap" />
+    </resultMap>
+    <select id="scorecardList" parameterType="hmap" resultMap="listOfScorecard">
+        select a.scrd_no as up_scorecard_no,
+               b.scrd_no as scorecard_no,
+               a.content as category,
+               b.content
+          from (select *
+                 from srv_prjt_scrd
+                where prjt_no = #{sess_project_no}
+                  and lev = 1
+                  and up_id is null) a
+               left outer join (select *
+                                 from srv_prjt_scrd
+                                where prjt_no = #{sess_project_no}
+                                  and lev = 2
+                                  and up_id is not null) b on a.scrd_no = b.up_id
+    </select>
+    <select id="defaultPipeline" parameterType="hmap" resultType="string">
+        select lang as defaultPipeline
+          from (select *
+                 from com_prjt_mst
+                 where up_comm_cd = 410) a
+               join (select *
+                          from sys_lang_mst
+                         where up_lang_cd = 410
+                           and lang_tp = #{lang}) b on a.lang_cd = b.lang_cd
+    </select>
     <select id="generalInformation" parameterType="hmap" resultType="hmap">
         SELECT PRJT_NM AS project_name,
                DEPT_NM AS project_department,
@@ -20,6 +56,7 @@
           FROM SRV_PRJT_INFO
          WHERE PRJT_NO = #{sess_project_no}
     </select>
+
     <select id="generalInformation_BAK" parameterType="hmap" resultType="hmap">
         SELECT *
           FROM (SELECT *

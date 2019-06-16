@@ -24,14 +24,13 @@ class HeaderComponent extends React.Component {
       this.handleChanged = this.handleChanged.bind(this);
       this.handleMenuOpen = this.handleMenuOpen.bind(this);
       this.handleMenuClose = this.handleMenuClose.bind(this);
-      this.textInput = React.createRef();
   }
 
 
   componentDidMount() {
 
   }
-
+  
   componentWillReceiveProps(nextProps, nextContext) {
     if(this.props.open !== nextProps.workspace && !nextProps.workspace){
       this.props.close();
@@ -78,13 +77,13 @@ class HeaderComponent extends React.Component {
           className={classes.headerTitle} >
           {this.props.headerMainTitle}
         </Typography>
-        <Input 
+        <Input
           value={this.state.search}
           name='search'
           placeholder="Search"
           className={classes.headerInput}
           onChange={e => this.handleChanged(e)}
-          inputRef={this.textInput} 
+          inputRef={this.textInput}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

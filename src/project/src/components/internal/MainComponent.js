@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import style from '../../assets/styles/header'
 import {withStyles} from "@material-ui/core";
 import classNames from 'classnames';
-import {HOME, ENTRANCE,VI_CMPY_001,VI_CMPY_003} from '../../pages/index.async';
+import {ENTRANCE,VI_CMPY_001,VI_CMPY_003} from '../../pages/index.async';
 
 class Main extends React.Component {
   render() {
@@ -16,12 +16,8 @@ class Main extends React.Component {
       }}>
         {/*<Route exact path="/" component={VI_CMPY_001} />*/}
          <Route exact path="/" component={ENTRANCE} />
-        <Route exact path="/overview" component={VI_CMPY_001} />
-        <Route exact path="/v3" component={VI_CMPY_003} />
-        {/* <Route exact path="/" component={ENTRANCE} /> */}
-        <Route exact path="/VI_CMPY_001" component={VI_CMPY_001} />
-        <Route exact path="/Tasks" component={VI_CMPY_003} />
-        <Route exact path="/ws" component={HOME} />
+         <Route exact path={`/:workspace_id/overview`} component={VI_CMPY_001} />
+         <Route exact path="/Tasks" component={VI_CMPY_003} />
       </main>
     )
   }

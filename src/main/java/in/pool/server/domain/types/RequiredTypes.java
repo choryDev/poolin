@@ -1,5 +1,6 @@
 package in.pool.server.domain.types;
 
+// COM_PRJT_MST
 public enum RequiredTypes {
     REQUIRED("500-001"), OPTIONAL("500-002"), DISABLE("500-003");
 

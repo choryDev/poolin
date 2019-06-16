@@ -167,7 +167,7 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: 90 - 24,
+    marginLeft: 0,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {

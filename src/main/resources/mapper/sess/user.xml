@@ -5,15 +5,29 @@
 
 <mapper namespace="sess.user">
 
-    <select id="myWorkspaceList" parameterType="hmap" resultType="hmap">
-        select B.WRKS_ID as workspace_id,
-               if(c.wrks_nm is null, '', c.wrks_nm) as ws_name,
-               if(c.description is null, '', c.description) as ws_description,
-               a.auth_tp as auth_tp
+    <select id="myProjectList" parameterType="hmap" resultType="hmap">
+        select cc.prjt_nm as project_name,
+               bb.prjt_id as project_id
           from (select *
-                  from srv_wrks_mem
-                 where user_no = 123
-                   and status = '100-002') a
+                 from srv_prjt_mem
+                where user_no = #{sess_user_no}) aa
+               join (select *
+                      from (select wrks_no as workspace_no
+                             from srv_wrks_mst
+                            where wrks_no = #{sess_workspace_no}) a
+                           join srv_prjt_mst b on a.workspace_no = b.wrks_no) bb on aa.prjt_no = bb.prjt_no
+               join srv_prjt_info cc on bb.prjt_no = cc.prjt_no
+         where bb.prjt_stat = '000-001'
+    </select>
+
+    <select id="myWorkspaceList" parameterType="hmap" resultType="hmap">
+        select b.wrks_id as workspace_id,
+               c.wrks_nm as workspace_name,
+               c.description as workspace_description
+          from (select *
+                 from srv_wrks_mem
+                where user_no = 124
+                  and status = '100-002') a
                join srv_wrks_mst b on a.wrks_no = b.wrks_no
                join srv_wrks_info c on a.wrks_no = c.wrks_no
     </select>
