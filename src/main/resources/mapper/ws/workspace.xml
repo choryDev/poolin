@@ -5,6 +5,16 @@
 
 <mapper namespace="ws.workspace">
 
+    <select id="getListOfWorkspace" parameterType="hmap" resultType="hmap">
+        select a.wrks_id,
+               b.wrks_nm,
+               b.description
+          from (select *
+                  from srv_wrks_mst
+                 where ins_id = #{sess_user_no}) a
+               join srv_wrks_info b on a.wrks_no = b.wrks_no
+    </select>
+
     <select id="myStatusInWorkspace" parameterType="hmap" resultType="in.pool.server.dto.workspace.mapping.MyStatusWorkspace">
         select B.WRKS_NO as workspaceNo,
                B.USER_NO as userNo,
