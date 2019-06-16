@@ -1,5 +1,4 @@
 import { color, font }from '../styles/material/com/index'
-import blue from '@material-ui/core/colors/blue';
 
 const styles = theme => ({
   marginTop10:{marginTop: '10px !important'},

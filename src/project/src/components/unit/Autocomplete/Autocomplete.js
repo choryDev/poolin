@@ -53,7 +53,7 @@ class AutoComponent extends React.Component {
   }
 
   render() {
-    const {classes, width} = this.props;
+    const { classes } = this.props;
 
     const {
       className,
@@ -94,7 +94,7 @@ class AutoComponent extends React.Component {
               value={this.state.inputValue} name={"inputValue"}
               onChange={this.handleChange} 
               onKeyPress={event =>
-                {if(event.key === 'Enter' && filter_list.length==1){
+                {if(event.key === 'Enter' && filter_list.length === 1){
                   this.handleView(filter_list[0][`${keywordView}`]);
                   this.props.handleautocomplete(valueName,filter_list[0][`${keywordValue}`]);
                   this.handleShowOpen();
