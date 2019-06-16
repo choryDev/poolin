@@ -8,7 +8,7 @@ import HeaderConatainer from 'containers/internal/HeaderConatainer';
 import LeftContainer from './containers/internal/LeftContainer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import store from './store';
-import queryString from 'query-string';
+
 import {inWorkspace} from './actions/behave/ConfigAction';
 class AppComponent extends React.Component {
   state = {

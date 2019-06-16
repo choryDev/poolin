@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import HeaderConatainer from 'containers/internal/HeaderConatainer';
+import HeaderConatainer from '../containers/internal/HeaderConatainer';
 import sendData from "../assets/utils/sendData";
 import classNames from 'classnames';
 import {Atag, Input, Typography} from './unit/index';
@@ -33,7 +33,7 @@ class LandingComponent extends React.Component {
       this.setState({
         loading: true,
       });
-         sendData('/api//api/sjoin', 'post', {}, {
+         sendData('/api/invitation', 'post', {}, {
            email: this.state.email,
          }, { timeout: 30 * 1000 }, res => {
            this.setState({
@@ -43,7 +43,7 @@ class LandingComponent extends React.Component {
          }, err => {
            this.setState({
              loading: false,
-             alertMessage:err.message
+             alertMessage:err.data.message
            })
          });
      }
@@ -146,6 +146,6 @@ class LandingComponent extends React.Component {
       </div>
     )
   }
-};
+}
 
 export default LandingComponent;

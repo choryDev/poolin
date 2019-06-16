@@ -5,7 +5,7 @@
 
 <mapper namespace="sess.session">
 
-    <select id="getIdUsingKey" parameterType="hmap" resultType="biz.assi.api.dto.sign.UserKeyDto">
+    <select id="getIdUsingKey" parameterType="hmap" resultType="in.pool.server.dto.sign.UserKeyDto">
         SELECT B.USER_NO AS userNo,
                B.USERNAME AS username,
                B.EMAIL AS email,
@@ -49,7 +49,7 @@
          WHERE USERNAME = #{username}
     </select>
 
-    <select id="findUserAtResetPassword" parameterType="hmap" resultType="biz.assi.api.dto.sign.UserFindPasswordDto">
+    <select id="findUserAtResetPassword" parameterType="hmap" resultType="in.pool.server.dto.sign.UserFindPasswordDto">
         select a.user_no as userNo,
                a.username,
                a.email,
@@ -63,7 +63,7 @@
                join srv_usr_findpw b on a.user_no = b.user_no
     </select>
 
-    <select id="checkSessionByProject" parameterType="hmap" resultType="biz.assi.api.dto.types.InSession">
+    <select id="checkSessionByProject" parameterType="hmap" resultType="in.pool.server.dto.types.InSession">
           SELECT A.USER_NO as userNo,
                  A.USERNAME as username,
                  A.EMAIL as email,
@@ -76,7 +76,9 @@
                  projectNo,
                  projectId,
                  belongType as projectBelongType,
-                 projectAuthType
+                 projectAuthType,
+                 projectType,
+                 projectStatus
             FROM (SELECT *
                     FROM SRV_USR_MST
                    WHERE STATUS = '100-002') A
@@ -97,14 +99,16 @@
                                A.PRJT_ID AS projectId,
                                A.BELONG_TP AS belongType,
                                B.AUTH_TP AS projectAuthType,
-                               B.USER_NO
+                               B.USER_NO,
+                               A.PRJT_TP AS projectType,
+                               A.PRJT_STAT AS projectStatus
                           FROM (SELECT *
                                   FROM SRV_PRJT_MST
                                  WHERE PRJT_ID = #{sess_project_id}) A
                                JOIN SRV_PRJT_MEM B ON A.PRJT_NO = B.PRJT_NO
                          WHERE B.STATUS = '100-002') D ON B.USER_NO = D.USER_NO
     </select>
-    <select id="checkSessionByWorkspace" parameterType="hmap" resultType="biz.assi.api.dto.types.InSession">
+    <select id="checkSessionByWorkspace" parameterType="hmap" resultType="in.pool.server.dto.types.InSession">
           SELECT A.USER_NO as userNo,
                  A.USERNAME as username,
                  A.EMAIL as email,
@@ -132,7 +136,7 @@
                          WHERE B.STATUS = '100-002') C ON B.USER_NO = C.USER_NO
     </select>
 
-    <select id="checkSessionByMe" parameterType="hmap" resultType="biz.assi.api.dto.types.InSession">
+    <select id="checkSessionByMe" parameterType="hmap" resultType="in.pool.server.dto.types.InSession">
       SELECT A.USER_NO as userNo,
              A.USERNAME as username,
              A.EMAIL as email,

@@ -3,6 +3,7 @@ import { CompanyCard } from './unit';
 import { Typography } from './unit/index'
 import Modal from './EntranceModalComponent'
 import sendData from '../assets/utils/sendData'
+import {Link} from 'react-router-dom';
 const tileData = [
   {title: 'ssss', author: '', icon: 'fas fa-building', color: 'red'},
   {title: '1111', author: '', icon: 'fas fa-industry', color: 'blue'},
@@ -70,7 +71,7 @@ class EntranceComponent extends React.Component {
       </Typography>
         <div className={classes.cardWrap}>
           {tileData.map((row, i) =>
-             <CompanyCard
+             <CompanyCard component={Link} to={"/overview"}
               headColor={row.color}
               key={i}
               title={row.title}

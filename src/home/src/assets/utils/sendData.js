@@ -2,7 +2,7 @@ import axios from 'axios';
 import {ELW_TOKEN} from "./KEY";
 
 const sendData = (url, method = 'get', params = {}, data = '{}', config, func, efunc) => {
-  params.acc_tp = 'W';
+  params.access_tp = 'W';
   params.lang = 'en';
   let headers = {};
   headers[ELW_TOKEN] = sessionStorage.getItem(ELW_TOKEN);
@@ -15,13 +15,16 @@ const sendData = (url, method = 'get', params = {}, data = '{}', config, func, e
     ...config
   }).then(
     response => {
+      console.log('repsonse :: ')
+      console.log(response)
       if(func !== undefined) func(response.data);
     }
   ).catch(({...result}) => {
     const {response} = result;
-    if(response !== undefined && response.data !== undefined && response.data.error !== undefined && efunc !== undefined){
-      efunc(response.data.error);
-    }else efunc();
+    // if(response !== undefined && response.data !== undefined && response.data.error !== undefined && efunc !== undefined){
+    //   efunc(response.data.error);
+    efunc(response);
+    // }else efunc();
   });
 };
 

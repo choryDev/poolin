@@ -34,5 +34,7 @@
 
         <!-- workspace -->
         <mapper resource="mapper/ws/workspace.xml"/>
+        <mapper resource="mapper/ws/project.xml"/>
+
     </mappers>
 </configuration>

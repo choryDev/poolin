@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding= "UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="ws.project">
+
+    <select id="generalInformation" parameterType="hmap" resultType="hmap">
+        SELECT PRJT_NM AS project_name,
+               DEPT_NM AS project_department,
+               INTERNAL_ID AS porject_internal_id,
+               LOCATION AS location,
+               CITY AS city,
+               REMOTE AS remote,
+               LOCATION AS location,
+               POSITION AS position_type,
+               CATEGORY AS category,
+               EDU AS education,
+               EXP AS experience
+          FROM SRV_PRJT_INFO
+         WHERE PRJT_NO = #{sess_project_no}
+    </select>
+    <select id="generalInformation_BAK" parameterType="hmap" resultType="hmap">
+        SELECT *
+          FROM (SELECT *
+                  FROM SRV_PRJT_INFO
+                 WHERE PRJT_NO = 34) AA
+               LEFT OUTER JOIN (SELECT A.COMM_CD AS REMOTE_TP,
+                            B.LANG AS REMOTE
+                       FROM (SELECT *
+                               FROM COM_WRKS_MST
+                              WHERE UP_COMM_CD = 504) A
+                            JOIN (SELECT *
+                                    FROM SYS_LANG_MST
+                                   WHERE UP_LANG_CD = 704
+                                     AND LANG_TP = 'kr') B ON A.LANG_CD = B.LANG_CD) BB ON AA.REMOTE = BB.REMOTE_TP
+                LEFT OUTER JOIN (SELECT A.COMM_CD AS POSITION_TP,
+                            B.LANG AS POSITION
+                       FROM (SELECT *
+                               FROM COM_WRKS_MST
+                              WHERE UP_COMM_CD = 700) A
+                            JOIN (SELECT *
+                                    FROM SYS_LANG_MST
+                                   WHERE UP_LANG_CD = 700
+                                     AND LANG_TP = 'kr') B ON A.LANG_CD = B.LANG_CD) CC ON AA.POSITION = CC.POSITION_TP
+                LEFT OUTER JOIN (SELECT A.COMM_CD AS CATEGORY_TP,
+                            B.LANG AS CATEGORY
+                       FROM (SELECT *
+                               FROM COM_WRKS_MST
+                              WHERE UP_COMM_CD = 701) A
+                            JOIN (SELECT *
+                                    FROM SYS_LANG_MST
+                                   WHERE UP_LANG_CD = 701
+                                     AND LANG_TP = 'kr') B ON A.LANG_CD = B.LANG_CD) DD ON AA.CATEGORY = DD.CATEGORY_TP
+                 LEFT OUTER JOIN (SELECT A.COMM_CD AS EDU_TP,
+                            B.LANG AS EDU
+                       FROM (SELECT *
+                               FROM COM_WRKS_MST
+                              WHERE UP_COMM_CD = 702) A
+                            JOIN (SELECT *
+                                    FROM SYS_LANG_MST
+                                   WHERE UP_LANG_CD = 702
+                                     AND LANG_TP = 'kr') B ON A.LANG_CD = B.LANG_CD) EE ON AA.EDU = EE.EDU_TP
+                 LEFT OUTER JOIN (SELECT A.COMM_CD AS EXP_TP,
+                            B.LANG AS EXP
+                       FROM (SELECT *
+                               FROM COM_WRKS_MST
+                              WHERE UP_COMM_CD = 703) A
+                            JOIN (SELECT *
+                                    FROM SYS_LANG_MST
+                                   WHERE UP_LANG_CD = 703
+                                     AND LANG_TP = 'kr') B ON A.LANG_CD = B.LANG_CD) FF ON AA.EXP = FF.EXP_TP
+    </select>
+
+</mapper>

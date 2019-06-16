@@ -5,7 +5,7 @@
 
 <mapper namespace="ws.workspace">
 
-    <select id="myStatusInWorkspace" parameterType="hmap" resultType="biz.assi.api.dto.workspace.MyStatusWorkspace">
+    <select id="myStatusInWorkspace" parameterType="hmap" resultType="in.pool.server.dto.workspace.mapping.MyStatusWorkspace">
         select B.WRKS_NO as workspaceNo,
                B.USER_NO as userNo,
                B.AUTH_TP as authType,
