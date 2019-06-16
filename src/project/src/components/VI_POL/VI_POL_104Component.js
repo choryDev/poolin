@@ -107,7 +107,7 @@ class VI_POL_104Component extends React.Component {
       onChange={e=>this.handleChanged(e, 'sec',idx)}
       value={data.secNn}
       name='secNm'
-      type={'sm'}
+      shape={'sm'}
       className={classNames(classes.fullWidth,classes.marginBtm10)}/>
        {data.list.map((r,i)=>
       <div key={i}>
@@ -116,7 +116,7 @@ class VI_POL_104Component extends React.Component {
             onChange={e=>this.handleChanged(e, 'sec',idx,i)}
             value={r.option}
             name='option'
-            type={'sm'}
+            shape={'sm'}
             className={classNames(classes.marginBtm10)} 
             style={{width: '400px'}}/>
         </div>
@@ -147,7 +147,7 @@ class VI_POL_104Component extends React.Component {
           name='scoreCaedNm'
           value={this.state.scoreCaedNm}
           onChange={e=>this.handleChanged(e)}
-          type={'sm'} className={classNames(classes.fullWidth,classes.marginTop10)}/>
+          shape={'sm'} className={classNames(classes.fullWidth,classes.marginTop10)}/>
         <Divider style={{margin: '10px 0'}}/>
           <div>
             {this.state.scoreCard.toJS().map((r,i)=>

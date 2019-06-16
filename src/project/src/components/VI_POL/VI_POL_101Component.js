@@ -39,7 +39,7 @@ class VI_POL_101Component extends React.Component {
   }
 
   render() {
-    const { classes ,handleModal, open} = this.props;
+    const { classes } = this.props;
     return (
       <div className={classes.VI_POL_101}>
         <Typography
@@ -55,7 +55,7 @@ class VI_POL_101Component extends React.Component {
           onChange={e=>{this.handleChanged(e);this.props.handleHeaderChanged(e)}}
           name={'pstTitle'}
           className={classNames(classes.marginBtm10,classes.titleInput)}
-          type={'sm'} 
+          shape={'sm'} 
           color={blue}/>
         <div>
           <Input 
@@ -64,7 +64,7 @@ class VI_POL_101Component extends React.Component {
             onChange={e=>this.handleChanged(e)}
             name={'department'}
             className={classes.subInput} 
-            type={'sm'} 
+            shape={'sm'} 
             color={blue}/>
           <Input 
             placeholder='Internal ID'
@@ -72,7 +72,7 @@ class VI_POL_101Component extends React.Component {
             onChange={e=>this.handleChanged(e)}
             name={'id'}
             className={classes.subInput} 
-            type={'sm'} 
+            shape={'sm'} 
             color={blue}/>
         </div>
         <Typography

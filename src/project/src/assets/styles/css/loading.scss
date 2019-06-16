@@ -1,8 +1,8 @@
 .LoaderBalls {
   position: absolute;
-  top: calc(50% - 72px);
-  left: calc(50% + 40px);
-	width: 320px;
+  top: calc(50%);
+  left: calc(50% + 10%);
+	width: 10%;
 	display: flex;
 	justify-content: space-between;
   align-items: center;
@@ -11,8 +11,8 @@
 		// .LoaderBalls__wrapper__item
 		$anim-drt: 0.4s;
 		$anim-ease: cubic-bezier(.6,.05,.15,.95);
-		width: 80px;
-		height: 80px;
+		width: 2rem;
+		height: 2rem;
 		border-radius: 50%;
 		background: #2D3135;
 

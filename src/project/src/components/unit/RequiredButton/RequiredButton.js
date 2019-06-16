@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import {color, font} from '../../../assets/styles/material/com/index';
+import { color } from '../../../assets/styles/material/com/index';
 import { makeStyles } from '@material-ui/styles';
 
 const RequiredButton = ({ ...state }) => {
