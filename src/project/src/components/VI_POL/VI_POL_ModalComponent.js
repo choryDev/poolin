@@ -161,7 +161,6 @@ class VI_POL_ModalComponent extends React.Component {
       sendData(`/api/project/${this.props.workspaceId}/${this.props.projectId}/general`, 'get', {}, {},
           {timeout: 30 * 1000},
           res => {
-            this.fetchRequired();
             const {general} = res.data;
             this.setState({
               project_id: general.project_id,
@@ -178,12 +177,13 @@ class VI_POL_ModalComponent extends React.Component {
               experience: general.experience,
               newable: false
             });
+              this.fetchRequired();
           });
     }
   }
 
   fetchRequired(){
-      if(this.state.project_id === undefined) return;
+      if(this.state.project_id === undefined || this.state.project_id === '') return;
         sendData(`/api/project/${this.props.workspaceId}/${this.state.project_id}/required`, 'get', {}, {},
             {timeout: 30 * 1000},
             res => {

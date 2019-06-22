@@ -3,6 +3,8 @@ import classNames from 'classnames';
 import blue from '@material-ui/core/colors/blue';
 import { Input, Typography, Autocomplete } from '../unit/index'
 import { countries } from './dump'
+import TextField from "@material-ui/core/es/TextField";
+import MenuItem from "@material-ui/core/MenuItem";
 
 class VI_POL_101Component extends React.Component {
 
@@ -18,28 +20,34 @@ class VI_POL_101Component extends React.Component {
         <Typography
           variant={'h5'}
           fontWeight={2}
-          className={classNames(classes.titleText,classes.marginBtm30)}>
+          className={classNames(classes.titleText,classes.marginBtm20)}>
           Position Details
         </Typography>
-        <Input 
-          autoComplete={'off'}
-          placeholder='Position Title *'
-          value={this.props.project_name}
-          onChange={e => {
-              this.props.handleChangedStep1(e);
-              this.props.handleHeaderChanged(e)
-          }}
-          onBlur={() => {
-              if(this.props.newable) {
-                  this.props.addNewOne();
-              }
-          }}
-          name={'project_name'}
-          className={classNames(classes.marginBtm10, classes.titleInput)}
-          shape={'sm'}
-          color={blue}
-        />
-        <div>
+        <div style={{
+            display: 'flex'
+        }}>
+            <Input
+              autoComplete={'off'}
+              placeholder='Position Title *'
+              value={this.props.project_name}
+              onChange={e => {
+                  this.props.handleChangedStep1(e);
+                  this.props.handleHeaderChanged(e)
+              }}
+              onBlur={() => {
+                  if(this.props.newable) {
+                      this.props.addNewOne();
+                  }
+              }}
+              name={'project_name'}
+              className={classNames(classes.marginBtm10, classes.titleInput)}
+              shape={'sm'}
+              color={blue}
+            />
+        </div>
+        <div style={{
+            display: 'flex',
+        }}>
           <Input 
             placeholder='Department'
             value={this.props.department}
@@ -57,8 +65,8 @@ class VI_POL_101Component extends React.Component {
             name={'project_internal_id'}
             disabled={this.props.newable}
             readOnly={this.props.newable}
-            className={classes.subInput} 
-            shape={'sm'} 
+            className={classes.subInput}
+            shape={'sm'}
             color={blue}/>
         </div>
         <Typography
@@ -67,17 +75,28 @@ class VI_POL_101Component extends React.Component {
           className={classes.subTitle}>
           Location
         </Typography>
-        <Autocomplete
-          placeholder='Country *'
-          keywordValue='value'
-          keywordView='name'
-          array={countries}
-          valueName='country'
-          disabled={this.props.newable}
-          readOnly={this.props.newable}
-          view={this.props.location}
-          handleautocomplete={(name, value) => this.props.handleautocomplete('location', value)}
-          style={{marginBottom: '10px'}}/>
+          <TextField
+              select
+              label="Select"
+              value={this.props.location}
+              onChange={e => this.props.handleChangedStep1(e)}
+              name={"location"}
+              margin="dense"
+              disabled={this.props.newable}
+              readOnly={this.props.newable}
+              shape={'sm'}
+              style={{
+                  marginTop: 18,
+                  width: 250
+              }}
+              variant="outlined"
+          >
+              {countries.map(option => (
+                  <MenuItem key={option.value} value={option.value}>
+                      {option.name}
+                  </MenuItem>
+              ))}
+          </TextField>
         <div style={{display: 'flex'}}>
             <input
               type='checkbox'
@@ -100,47 +119,97 @@ class VI_POL_101Component extends React.Component {
           className={classes.subTitle}>
           Details
         </Typography>
-        <div style={{display: 'flex',marginBottom: '10px'}}>
-          <Autocomplete
-            placeholder='Type Of Position'
-            keywordValue='code_value'
-            keywordView='code_name'
-            disabled={this.props.newable}
-            readOnly={this.props.newable}
-            array={this.props.typePosition}
-            valueName='typePosition'
-            handleautocomplete={(name, value) => this.props.handleautocomplete('position_type', value)}
-            style={{marginRight: '10px'}}/>
-          <Autocomplete
-            placeholder='Category'
-            keywordValue='code_value'
-            keywordView='code_name'
-            array={this.props.typeCategory}
-            valueName='typeCategory'
-            disabled={this.props.newable}
-            readOnly={this.props.newable}
-            handleautocomplete={(name, value) => this.props.handleautocomplete('category', value)}/>
+        <div style={{display: 'flex',marginBottom: 5}}>
+            <TextField
+                select
+                label="Select"
+                style={{
+                    marginRight: '10px',
+                    flex: 1
+                }}
+                value={this.props.position_type}
+                onChange={e => this.props.handleChangedStep1(e)}
+                name={"position_type"}
+                disabled={this.props.newable}
+                readOnly={this.props.newable}
+                margin="dense"
+                shape={'sm'}
+                variant="outlined"
+            >
+                {this.props.typePosition.map(option => (
+                    <MenuItem key={option.code_value} value={option.code_value}>
+                        {option.code_name}
+                    </MenuItem>
+                ))}
+            </TextField>
+            <TextField
+                select
+                label="Select"
+                style={{
+                    marginLeft: '10px',
+                    flex: 1
+                }}
+                value={this.props.category}
+                onChange={e => this.props.handleChangedStep1(e)}
+                name={"category"}
+                disabled={this.props.newable}
+                readOnly={this.props.newable}
+                margin="dense"
+                shape={'sm'}
+                variant="outlined"
+            >
+                {this.props.typeCategory.map(option => (
+                    <MenuItem key={option.code_value} value={option.code_value}>
+                        {option.code_name}
+                    </MenuItem>
+                ))}
+            </TextField>
         </div>
-        <div style={{display: 'flex',marginBottom: '10px'}}>
-          <Autocomplete
-            placeholder='Education'
-            keywordValue='code_value'
-            keywordView='code_name'
-            disabled={this.props.newable}
-            readOnly={this.props.newable}
-            array={this.props.typeEdu}
-            valueName='typeEdu'
-            handleautocomplete={(name, value) => this.props.handleautocomplete('education', value)}
-            style={{marginRight: '10px'}} />
-          <Autocomplete
-              placeholder='Experience'
-              keywordValue='code_value'
-              keywordView='code_name'
-              disabled={this.props.newable}
-              readOnly={this.props.newable}
-              array={this.props.typeExp}
-              valueName='typeExp'
-              handleautocomplete={(name, value) => this.props.handleautocomplete('experience', value)}/>
+        <div style={{display: 'flex',marginBottom: 5}}>
+            <TextField
+                select
+                label="Select"
+                style={{
+                    marginRight: '10px',
+                    flex: 1
+                }}
+                value={this.props.education}
+                onChange={e => this.props.handleChangedStep1(e)}
+                name={"education"}
+                disabled={this.props.newable}
+                readOnly={this.props.newable}
+                margin="dense"
+                shape={'sm'}
+                variant="outlined"
+            >
+                {this.props.typeEdu.map(option => (
+                    <MenuItem key={option.code_value} value={option.code_value}>
+                        {option.code_name}
+                    </MenuItem>
+                ))}
+            </TextField>
+            <TextField
+                select
+                label="Select"
+                style={{
+                    marginLeft: '10px',
+                    flex: 1
+                }}
+                value={this.props.experience}
+                onChange={e => this.props.handleChangedStep1(e)}
+                name={"experience"}
+                disabled={this.props.newable}
+                readOnly={this.props.newable}
+                margin="dense"
+                shape={'sm'}
+                variant="outlined"
+            >
+                {this.props.typeExp.map(option => (
+                    <MenuItem key={option.code_value} value={option.code_value}>
+                        {option.code_name}
+                    </MenuItem>
+                ))}
+            </TextField>
         </div>
       </div>
     )

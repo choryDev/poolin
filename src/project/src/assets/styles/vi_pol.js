@@ -1,13 +1,27 @@
 import { color, font }from '../styles/material/com/index'
 
 const styles = theme => ({
-  marginTop10:{marginTop: '10px !important'},
-  marginTop20:{marginTop: '20px !important'},
-  marginTop25:{marginTop: '25px !important'},
-  marginBtm10:{marginBottom: '10px !important'},
-  marginBtm20:{marginBottom: '20px !important'},
-  marginBtm30:{marginBottom: '30px !important'},
-  fullWidth:{width: '100%'},
+  marginTop10: {
+    marginTop: '10px !important'
+  },
+  marginTop20: {
+    marginTop: '20px !important'
+  },
+  marginTop25: {
+    marginTop: '25px !important'
+  },
+  marginBtm10: {
+    marginBottom: '10px !important'
+  },
+  marginBtm20: {
+    marginBottom: '20px !important'
+  },
+  marginBtm30: {
+    marginBottom: '30px !important'
+  },
+  fullWidth: {
+    width: '100%'
+  },
   modalRoot:{
   '&>div:nth-child(2)': {
       '&>div': {
@@ -87,7 +101,7 @@ const styles = theme => ({
     margin: '25px 0 10px'
   },
   titleInput:{
-    width: '400px',
+    flex: 1,
     '& input': {
       fontSize: '16px !important',
       lineHeight: '1.5',
@@ -95,7 +109,7 @@ const styles = theme => ({
     }
   },
   subInput: {
-    width: '195px',
+    flex: 1,
     '&:nth-child(1)':{
       marginRight: '10px'
     }
@@ -224,7 +238,7 @@ const styles = theme => ({
         '& input': {color: '#2196f3'},
       }
     }
-  }
-}); 
+  },
+});
 
 export default styles;

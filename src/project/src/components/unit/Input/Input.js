@@ -57,10 +57,9 @@ const Input = ({ ...state }) => {
     <MuiThemeProvider theme={theme}>
       <TextField
         {...other}
-        className={classNames(className,classes.defaultInput,
-          shape ? classes[shape] : null)}
+        className={classNames(className, classes.defaultInput, shape ? classes[shape] : null)}
         margin="normal"
-        variant="outlined"/>
+        variant="outlined" />
   </MuiThemeProvider>
   );
 };
